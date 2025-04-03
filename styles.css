@@ -1,0 +1,183 @@
+:root {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 200;
+
+  --bar-bground: rgb(245,245,223);
+  --bar-contrast: rgb(5,10,15);
+  --transition-time: 0.1s;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bar-contrast);
+}
+
+a {
+  text-decoration: none;
+  cursor: default;
+}
+
+section {
+  background-color: var(--bar-bground);
+  height: 100vh;
+  padding: 3rem;
+  margin: 0 0 1rem 0;
+  overflow: scroll;
+  border-radius: 1rem;
+}
+
+section:first-child {
+  border-top: 4rem;
+}
+
+section:last-child {
+  border-bottom: 0rem;
+}
+
+#container {
+  background-color: var(bar-contrast);
+  overflow: hidden;
+}
+
+#navbar {
+  position: -webkit-sticky;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: var(--bar-contrast);
+}
+
+#navlinks {
+  list-style-type: none;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+.navlink:hover {
+  background-color: var(--bar-bground);
+}
+
+.navlink:hover a {
+  color: var(--bar-contrast);
+}
+
+.navlink a {
+  line-height: 2rem;
+  padding: 1rem 1rem;
+  color: white;
+}
+
+.navlink:first-child{
+  float: left;
+  border-left: 0;
+}
+
+.navlink:first-child:hover{
+  background-color: var(--bar-contrast);
+}
+
+.project-card {
+  position: relative;
+  padding: 0vh 2vw 1vh 2vw;
+  margin: 5vh 5vw;
+  border: 0.1rem solid var(--bar-contrast);
+  border-right: 0.2rem;
+  border-bottom: 0.2rem;
+  border-style: outset;
+  border-radius: 0.3rem;
+  text-decoration: none;
+  color: var(--bar-contrast);
+  cursor: pointer;
+}
+
+.screenshot {
+  width: 100%;
+  display: flex;
+  border-radius: 0.3rem;
+}
+
+#profile-link {
+  color: white;
+}
+
+#profile-link-gh {
+  color: white;
+}
+
+#welcome-section {
+  padding: calc(30vh - 4rem) 0 0 0;
+  text-align: center;
+  vertical-align: middle;
+}
+
+#welcome-section h1 {
+  font-size: 5rem;
+  font-weight: 100;
+}
+
+#welcome-section p {
+  margin: 2vh -30vw 0 -30vw;
+}
+
+  #navbar {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden; 
+    transition: var(--transition-time);
+    width: 100vw;
+    background-color: var(--bar-contrast);
+}
+  .navlink {
+    float: right;
+    padding: 0rem 0rem;
+    text-align: center;
+    border-left: 1px solid var(--bar-bground);
+  }
+
+  .navlink:first-child:hover{
+  background-color: var(--bar-contrast);
+}
+
+
+  #container {
+    margin-left: 0;
+    margin-top: 2rem;
+    height: calc(100% -2rem);
+    transition: var(--transition-time);
+  }
+
+@media only screen and (min-width: 1000px) {
+  #navbar {
+    height: 100vh;
+    width: 10rem;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden; 
+    transition: var(--transition-time);
+  }
+  .navlink {
+    margin-right: -1rem;
+    width: 100%;
+    display: block;
+    float: left;
+    font-size: 1rem;
+    border: 0;
+    padding-top: 1rem;
+  }
+  .navlink:first-child {
+    padding: 0;
+  }
+  #container {
+    margin-left: 10rem;
+    height: 100vh;
+    transition: var(--transition-time);
+  }
+}
