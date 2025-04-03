@@ -2,9 +2,49 @@
   font-family: "Montserrat", sans-serif;
   font-weight: 200;
 
-  --bar-contrast: rgb(245, 245, 223);
-  --bar-bground: rgb(5, 10, 15);
   --transition-time: 0.1s;
+}
+
+@media (prefers-color-scheme: light) {
+  .theme {
+    --bar-contrast: rgb(245, 245, 223);
+    --bar-bground: rgb(5, 10, 15);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .theme.adaptive {
+    --bar-contrast: rgb(5, 10, 15);
+    --bar-bground: rgb(185, 185, 163);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* taken from https://codepen.io/nelledejones/pen/gOOPWrK */
+@keyframes pulse {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes nav-pulse {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
 }
 
 html {
@@ -13,16 +53,17 @@ html {
 
 body {
   background-color: var(--bar-bground);
+  color: var(--bar-bground);
 }
 
 a {
   text-decoration: none;
-  cursor: default;
+  cursor: pointer;
 }
 
 section {
   background-color: var(--bar-contrast);
-  height: calc(100vh - 6rem);
+  height: calc(100vh - 8rem);
   padding: 3rem 3rem 3rem 3rem;
   width: calc(100vh -9rem);
   margin: 0 0 1rem 0;
@@ -38,9 +79,7 @@ section:last-child {
 #container {
   height: 100%;
   width: 100%;
-  background-color: var(bar-contrast);
   overflow: hidden;
-  border: 3rem solid var(bar-contrast);
 }
 
 #navbar {
@@ -49,13 +88,15 @@ section:last-child {
   top: 0;
   left: 0;
   background-color: var(--bar-bground);
+  z-index: 10;
+  overflow-x: hidden;
+  width: 100vw;
 }
 
 #navlinks {
   list-style-type: none;
   overflow: hidden;
-  padding: 0;
-  margin: 0;
+  padding: 0rem 1rem;
 }
 
 #welcome-section {
@@ -68,21 +109,19 @@ section:last-child {
 #welcome-section h1 {
   font-size: 5rem;
   font-weight: 100;
+  animation: fadeIn 3s;
 }
 
 #welcome-section p {
   margin: 2vh -30vw 0 -30vw;
 }
 
-#navbar {
-  position: fixed;
-  z-index: 10;
-  top: 0;
-  left: 0;
-  overflow-x: hidden;
-  transition: var(--transition-time);
-  width: 100vw;
-  background-color: var(--bar-bground);
+#welcome-section i {
+  padding-top: 20vh;
+  font-size: 3rem;
+  color: var(--bar-bground);
+  cursor: pointer;
+  animation: pulse 1s infinite ease-in-out alternate;
 }
 
 #container {
@@ -105,20 +144,26 @@ section:last-child {
   color: var(--bar-bground);
   cursor: pointer;
   max-width: 800px;
-}
-
-.navlink:hover a {
-  color: var(--bar-bground);
-}
-
-.navlink:hover {
-  background-color: var(--bar-contrast);
-  transition: 0.5s;
+  animation: fadeIn 3s;
 }
 
 .navlink a {
-  line-height: 2rem;
-  padding: 1rem 1rem;
+  color: var(--bar-contrast);
+}
+
+.navlink:hover {
+  border-radius: 1rem;
+  transition: 0.5s;
+  animation: nav-pulse 1s infinite ease-in-out alternate;
+}
+
+.navlink li a {
+  display: block;
+  color: var(--bar-contrast);
+  text-decoration: none;
+}
+
+.navlink:last-child a {
   color: var(--bar-contrast);
 }
 
@@ -131,7 +176,10 @@ section:last-child {
 
 .navlink {
   float: right;
-  padding: 0rem 0rem;
+  width: 20%;
   text-align: center;
-  border-left: 1px solid var(--bar-contrast);
+}
+
+.navlink:last-child {
+  float: left;
 }
