@@ -31,19 +31,27 @@
         <h1>Projects</h1>
         <p>Projects I've made or contributed to.</p>
 
-        <a href="https://www.github.com/Atomic-Germ/Time-to-Leave"
-          ><div class="project-card">
+        <a
+          id="time-to-leave"
+          href="https://www.github.com/Atomic-Germ/Time-to-Leave"
+        >
+          <div class="project-card">
             <h2>Time to Leave</h2>
             <p>A work time-clock that reminds you to go home.</p>
-            <img class="screenshot" src="./ttl-screenshot.jpg" /></div
-        ></a>
+            <img class="screenshot" src="./ttl-screenshot.jpg" />
+          </div>
+        </a>
 
-        <a href="https://www.github.com/Atomic-Germ/Time-to-Go"
-          ><div class="project-card">
+        <a id="time-to-go" href="https://www.github.com/Atomic-Germ/Time-to-Go">
+          <div class="project-card">
             <h2>Time to Go</h2>
             <p>A mobile-first port of Time to Leave</p>
-            <img class="screenshot" src="./ttg-screenshot.png" /></div
-        ></a>
+            <div class="screenshots">
+              <img class="screenshot" src="./ttg-screenshot.png" />
+              <img class="screenshot" src="./ttg-screenshot-android.png" />
+            </div>
+          </div>
+        </a>
       </section>
     </div>
   </body>
@@ -51,16 +59,34 @@
   <nav id="navbar">
     <ul id="navlinks">
       <li class="navlink" alt="Github Profile">
-        <a target="_blank" href="https://github.com/Atomic-Germ"
-          ><i class="fa fa-github"></i
-        ></a>
+        <a target="_blank" href="https://github.com/Atomic-Germ">
+          <i class="fa fa-github"></i>
+        </a>
       </li>
+
       <li class="navlink" id="profile-link" alt="Free Code Camp Profile">
-        <a target="_blank" href="https://www.freecodecamp.org/CaseyParker"
-          ><i class="fa fa-free-code-camp"></i
-        ></a>
+        <a target="_blank" href="https://www.freecodecamp.org/CaseyParker">
+          <i class="fa fa-free-code-camp"></i>
+        </a>
       </li>
-      <li class="navlink"><a href="#projects" alt="Projects">Projects</a></li>
+
+      <li class="navlink" id="profile-link" alt="Exercism Profile">
+        <a target="_blank" href="https://exercism.org/profiles/Atomic-Germ">
+          <img class="svg" src="./exercism-logo.svg"
+        /></a>
+      </li>
+
+      <li class="dropdown navlink">
+        <a href="#projects" class="dropbtn" alt="Projects">Projects</a>
+        <div class="dropdown">
+          <button class="dropbtn" hidden>Dropdown</button>
+          <div class="dropdown-content">
+            <a href="#time-to-leave">Time to Leave</a>
+            <a href="#time-to-go">Time to Go</a>
+          </div>
+        </div>
+      </li>
+
       <li class="navlink">
         <a href="#welcome-section" alt="home">Casey Parker</a>
       </li>
