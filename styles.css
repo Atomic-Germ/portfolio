@@ -10,6 +10,7 @@
     --bar-contrast: rgb(245, 245, 223);
     --bar-bground: rgb(5, 10, 15);
     --svg-filter: invert(89%) sepia(30%) saturate(180%) hue-rotate(348deg) brightness(110%) contrast(92%);
+    --shadows: rgba(5, 10, 15, 0.8);
   }
 }
 
@@ -18,6 +19,7 @@
     --bar-contrast: rgb(5, 10, 15);
     --bar-bground: rgb(185, 185, 163);
     --svg-filter: invert(2%) sepia(66%) saturate(1799%) hue-rotate(185deg) brightness(95%) contrast(96%);
+    --shadows: rgba(245, 245, 223, 0.3);
   }
 }
 
@@ -59,7 +61,7 @@ body {
 }
 
 nav {
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px var(--shadows);
 }
 
 a {
@@ -145,10 +147,6 @@ section:last-child {
   position: relative;
   padding: 0vh 2vw 1vh 2vw;
   margin: auto;
-  border: 0.1rem solid var(--bar-bground);
-  border-right: 0.2rem;
-  border-bottom: 0.2rem;
-  border-style: outset;
   border-radius: 0.3rem;
   text-decoration: none;
   color: var(--bar-bground);
@@ -157,7 +155,7 @@ section:last-child {
   animation: fadeIn 3s;
   max-height: calc(100vh - 5rem);
   overflow-y: scroll;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px var(--shadows);
 }
 
 .project-card {
@@ -226,7 +224,7 @@ section:last-child {
   position: absolute;
   min-width: 16rem;
   background-color: var(--bar-bground);
-  box-shadow: 1vh 1vh 1vw 0px rgba(0,0,0,0.2);
+  box-shadow: 1vh 1vh 1vw 0px var(--shadows);
   border-radius: 0 0 1rem 1rem;
 }
 
