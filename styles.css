@@ -1,6 +1,6 @@
 :root {
   font-family: "Montserrat", sans-serif;
-  font-weight: 200;
+  font-weight: 200 900;
 
   --transition-time: 0.1s;
 }
@@ -122,6 +122,7 @@ section:last-child {
   font-size: 5rem;
   font-weight: 100;
   animation: fadeIn 3s;
+  text-shadow: 1px 1px 2px var(--shadows);
 }
 
 #welcome-section p {
@@ -143,23 +144,48 @@ section:last-child {
   transition: var(--transition-time);
 }
 
-.project-card {
-  position: relative;
-  padding: 0vh 2vw 1vh 2vw;
-  margin: auto;
-  border-radius: 0.3rem;
-  text-decoration: none;
-  color: var(--bar-bground);
-  cursor: pointer;
-  max-width: 800px;
-  animation: fadeIn 3s;
-  max-height: calc(100vh - 5rem);
-  overflow-y: scroll;
-  box-shadow: 0px 8px 16px 0px var(--shadows);
+#projects::before #project::after {
+  padding: 0;
+  margin 0;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: minmax(2rem, 1fr) minmax(min-content, 94rem) minmax(2rem, 1fr);
+  row-gap: 3rem;
 }
 
 .project-card {
-  margin-bottom: 1rem;
+  border-radius: 0.3rem;
+  text-decoration: none;
+  color: var(--bar-bground);
+  max-width: 80vw;
+  min-width: 480px;
+  animation: fadeIn 3s;
+  box-shadow: 0px 8px 16px 0px var(--shadows);
+  margin-bottom: 2rem;
+  padding: 0.5vw 3vw 3vw 3vw;
+}
+
+.project-title {
+  text-align: center;
+  font-size: 2.5rem;
+  text-shadow: 1px 1px 2px var(--shadows);
+}
+
+.project-description {
+  padding-top: 2rem;
+  font-size: 1rem;
+  text-align: left;
+}
+
+.project-description-link {
+  color: var(--bar-bground);
+  text-decoration: none;
+  text-shadow: 1px 1px 2px var(--shadows);
+}
+
+.project-description-link:hover {
+  text-shadow: 0px 0px 1px var(--shadows);
+  transition: 0.3s;
 }
 
 .navlink a {
@@ -186,10 +212,44 @@ section:last-child {
   color: var(--bar-contrast);
 }
 
+.screenshots {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(3, min-content);
+  gap: 1rem;
+  place-items: center;
+}
+
+.screenshots:nth-child(even) {
+  order: 2;
+}
+
+.screenshots img {
+  border-radius: 1.5rem;
+  box-shadow: 0.1vh 0.1vh 0.2vw 0px var(--shadows);
+}
+
+.screenshot img:nth-child(even) {
+  order: 1
+}
+
+.text-2 {
+  grid-column: 2;
+}
+
+.screenshot-2 {
+  grid-column: 1;
+}
+
 .screenshot {
-  max-height: 60vh;
-  border-radius: 0.3rem;
-  margin: auto;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+@media only screen and (max-width: 720px) {
+  .screenshots {
+    grid-template-columns: 1fr;
+  }
 }
 
 .navlink {
@@ -209,7 +269,6 @@ section:last-child {
   height: 1rem;
 }
 
-/* The container <div> - needed to position the dropdown content */
 .dropdown {
   position: fixed;
   top: 1rem;
@@ -218,7 +277,6 @@ section:last-child {
   display: inline-block;
 }
 
-/* Dropdown Content (Hidden by Default) */
 .dropdown-content {
   display: none;
   position: absolute;
@@ -228,7 +286,6 @@ section:last-child {
   border-radius: 0 0 1rem 1rem;
 }
 
-/* Links inside the dropdown */
 .dropdown-content a {
   color: var(--bar-contrast);
   padding: 1rem 2rem 1rem 2rem;

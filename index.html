@@ -31,27 +31,64 @@
         <h1>Projects</h1>
         <p>Projects I've made or contributed to.</p>
 
-        <a id="time-to-leave" href="https://www.github.com/Atomic-Germ/Time-to-Leave">
-          <div class="project-card">
-            <h2>Time to Leave</h2>
-            <p>A work time-clock that reminds you to go home. Using a punch-in punch-out system, TTL takes your lunch time and other factors into account, reminding you when it's time to leave.</p>
-            <div class="screenshots">
-              <img class="screenshot" src="./ttl-screenshot.jpg" alt="Main Clock Screen" /><p>There's a lot of information on the punch-in screen</p>
-            <img class="screenshot" src="./ttl-screenshot-waiver-manager.jpg" alt="Weekday Waiver Manager" />
-            </div>
+        <div class="project-card" id="time-to-leave">
+          <h2 class="project-title">Time to Leave</h2>
+          <p class="description">Time to Leave is built on <a class="project-description-link" target="_blank" href="https://www.electronjs.org/">Electron</a>, <a class="project-description-link" target="_blank" href="https://getbootstrap.com/">Bootstrap</a>, and <a class="project-description-link" target="_blank" href="https://jquery.com/">jQuery</a>. The majority of my contributions have been to the front end, and to a lesser extent javascript. Tests are written using <a class="project-description-link" target="_blank" href="https://mochajs.org/">Mocha</a> and <a class="project-description-link" target="_blank" href="https://sinonjs.org/">Sinon</a>, and functions are programmed based on those tests.
+          </p>
+          <div class="screenshots">
+            <a target="_blank" href="./ttl-screenshot.jpg">
+            <img
+              class="screenshot"
+              loading="lazy"
+              src="./ttl-screenshot.jpg"
+              alt="Main Clock Screen"
+              ></a>
+            <p>A work time-clock that reminds you to go home. Using a punch-in
+            punch-out system, TTL takes your lunch time and other factors into
+            account, reminding you when it's time to leave.</p></img>
+            <p>In the Workday Waiver Manager, you can account for days off, sick days, and other times you might be off the clock for a day.</p><a target="_blank" href="./ttl-screenshot-waiver-manager.jpg"><img
+              class="screenshot"
+              loading="lazy"
+              src="./ttl-screenshot-waiver-manager.jpg"
+              alt="Weekday Waiver Manager"
+              ></a>
+            <a target="_blank" href="./ttl-screenshot-notification.jpg"><img
+              class="screenshot"
+              loading="lazy"
+              src="./ttl-screenshot-notification.jpg"
+              alt="Time to Leave Notification"
+              ></a>
+            <p>Log the time you started working today, and the program will compute what time you should leave the office, considering the time you spent on lunch. When it's time, the program will notify you.</p></img>
+            <p>Users can set a number of  preferences via the Preferences Manager, configuring working days, work hours, lunches and breaks, and whether notifications are wanted.</p>
+            <a target="_blank" href="./ttl-screenshot-preferences.jpg"><img
+              class="screenshot"
+              loading="lazy"
+              src="./ttl-screenshot-preferences.jpg"
+              alt="Preferences Manager"
+              ></a>
           </div>
-        </a>
+          <p class="project-description">Time to Leave works on MacOS, Windows and Linux, and you can <a class="project-description-link" target="_blank" href="https://github.com/TTLApp/time-to-leave/releases/latest">download it here</a>. <a class="project-description-link" target="_blank" href="https://github.com/TTLApp/time-to-leave/blob/main/docs/CONTRIBUTING.md">Contributions are welcome</a>, and there are many other developers to work with on the <a class="project-description-link" target="_blank" href="https://discord.gg/P3KkEF5">discord server</a>. You can find the <a class="project-description-link" target="_blank" href="https://timetoleave.app/">official page here</a>.</p>
+        </div>
 
-        <a id="time-to-go" href="https://www.github.com/Atomic-Germ/Time-to-Go">
-          <div class="project-card">
-            <h2>Time to Go</h2>
-            <p>A mobile-first port of Time to Leave</p>
-            <div class="screenshots" style="column-count: 2;">
-              <img class="screenshot" src="./ttg-screenshot.png" />
-              <img class="screenshot" src="./ttg-screenshot-android.png" />
-            </div>
+        <div class="project-card" id="time-to-go">
+          <h2 class="project-title">Time to Go</h2>
+          <div class="screenshots">
+            <a target="_blank" href="./ttg-screenshot.png"><img
+              class="screenshot"
+              loading="lazy"
+              src="./ttg-screenshot.png"
+              ></a>
+          <p>A mobile-first port of Time to Leave</p>
+            </img>
+            <p>Works on both android and ios</p>
+            <a target="_blank" href="./ttg-screenshot-android.png"><img
+              class="screenshot"
+              loading="lazy"
+              src="./ttg-screenshot-android.png"
+              ></a>
+            </img>
           </div>
-        </a>
+        </div>
       </section>
     </div>
   </body>
@@ -71,7 +108,10 @@
       </li>
 
       <li class="navlink" id="profile-link" alt="Exercism Profile">
-        <a target="_blank" href="https://exercism.org/profiles/Atomic-Germ/contributions">
+        <a
+          target="_blank"
+          href="https://exercism.org/profiles/Atomic-Germ/contributions"
+        >
           <img class="svg" src="./exercism-logo.svg"
         /></a>
       </li>
