@@ -301,3 +301,10 @@ section:last-child {
   display: block;
 }
 
+.img-and-text {
+  display: flex;
+}
+
+.img-and-text > p {
+  align-self: flex-end;
+}
