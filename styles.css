@@ -129,7 +129,7 @@ section:last-child {
   margin: 2vh -30vw 0;
 }
 
-#welcome-section i {
+#welcome-section i, .project-section i {
   padding-top: 20vh;
   font-size: 3rem;
   color: var(--bar-bground);
@@ -159,7 +159,6 @@ section:last-child {
   text-decoration: none;
   color: var(--bar-bground);
   max-width: 80vw;
-  min-width: 480px;
   animation: fade-in 3s;
   box-shadow: 0 8px 16px 0 var(--shadows);
   margin-bottom: 2rem;
@@ -233,10 +232,18 @@ section:last-child {
 
 .dropdown {
   position: fixed;
-  top: 1rem;
-  right: 14rem;
   text-align: right;
   display: inline-block;
+  top: 1rem;
+  right: 14rem;
+}
+
+#music-menu.dropdown {
+  position: fixed;
+  text-align: right;
+  display: inline-block;
+  top: 1rem;
+  right: 18rem;
 }
 
 .dropdown-content {
@@ -294,14 +301,28 @@ section:last-child {
   object-fit: cover;
 }
 
-@media only screen and (width <= 720px) {
-  .screenshots {
-    grid-template-columns: 1fr;
-  }
-}
-
 .svg {
   filter: var(--svg-filter);
   width: 1rem;
   height: 1rem;
+}
+
+iframe {
+  display: grid;
+  width: 40%;
+  border: 1px solid gray;
+  box-shadow: 0vh 0vh 3vw 0rem var(--shadows);
+  border-radius: 1.7rem;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+@media only screen and (width <= 720px) {
+  .screenshots {
+    grid-template-columns: 1fr;
+  }
+  section {
+    padding-top: 1vh;
+    margin: 1vh auto;
+  }
 }
