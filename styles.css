@@ -154,7 +154,7 @@ section:last-child {
   row-gap: 3rem;
 }
 
-.project-card {
+.project-tile {
   border-radius: 0.3rem;
   text-decoration: none;
   color: var(--bar-bground);
