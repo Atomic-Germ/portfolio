@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="font" href="./fonts/JF-Dot-Shinonome-14-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <title>RPG - Dragon Repeller</title>
+  </head>
+  <body>
+    <div id="game">
+      <div id="controls">
+        <button id="button1">SHOP</button>
+        <button id="button2">HUNT MONSTER</button>
+        <button id="button3">GYGAS</button>
+      </div>
+      <div id="stat-bar">
+      <div id="stats">
+        <span class="stat">XP: <strong><span id="xpText">0</span></strong></span>
+        <span class="stat">HEALTH: <strong><span id="healthText">100</span></strong></span>
+        <span class="stat">GOLD: <strong><span id="goldText">50</span></strong></span>
+      </div>
+      <div id="monsterStats">
+        <span class="stat"><strong><span id="monsterName">MONSTER</span></strong></span>
+        <span class="stat">HEALTH: <strong><span id="monsterHealth"></span></strong></span>
+        <span class="stat"><span id="monsterImage"><img src="./monsters/dragon-normal.png" /></span></span>
+      </div></div>
+      <div id="text">
+        Hi! This game is meant to be an exercise in coding, and is based on the Dragon Repeller exercise on <a href="https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures-v8/#learn-basic-javascript-by-building-a-role-playing-game">FreeCodeCamp</a>.
+      </div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,125 @@
+@font-face {
+    font-family: 'JF Dot Shinonome Gothic 14';
+    src: url('font/JF-Dot-Shinonome-14-Regular.ttf') format('truetype');
+}
+
+:root {
+  --background-color: rgba(30, 50, 30, 80%);
+  --text-color: rgb(230, 230, 230);
+  --window-color: rgb(135, 100, 100);
+  --button-color: rgb(100, 100, 100); 
+  --button-color-active: rgb(70, 70, 70); 
+  --shadows: rgb(5 10 15 / 80%);
+  --transition-time: 0.1s;
+  --window-background: var(--shadows);
+  --border-main: 4px solid var(--shadows);
+}
+
+* {
+  font-family: 'JF Dot Shinonome Gothic 14'; font-weight: normal; font-style: normal;
+}
+
+body {
+  color: var(--text-color);
+  background-color: var(--shadows);
+  font-size: 5ch;
+}
+
+a {
+  color: var(--text-color);
+}
+
+button {
+  font-size: 1.5ch;
+  background-color: var(--button-color);
+  border: var(--border-main);
+  text-align: center;
+  cursor: initial;
+  padding-bottom: auto;
+}
+
+button:active {
+  background-color: var(--button-color-active);
+}
+
+.stat {
+  display: table;
+  height: 2ch;
+}
+
+#game {
+  background-color: var(--window-background);
+  border: var(--border-main);
+  height: 90%;
+  max-height: 90%;
+  margin: auto;
+  margin-top: 1ch;
+  padding: 2ch;
+}
+
+#stat-bar {
+  display: grid;
+  grid-gap: 1ch;
+}
+
+#text {
+  background-color: rgba(30, 30, 30, 80%);
+  padding: 0.2ch 1ch 0.2ch 1ch;
+  margin-top: 1ch;
+  border: var(--border-main);
+}
+
+#monsterStats, #stats {
+  display: inline-grid;
+  min-width: 30vw;
+  border: var(--border-main);
+  height: 6ch; 
+  padding: 0ch 1ch;
+  /*  display: none; */
+}
+
+#monsterImage > img {
+  width: 10ch;
+  position: absolute;
+  top: 1ch;
+  right: 1ch;
+}
+
+#stats {
+  grid-column: 1;
+}
+
+#monsterStats {
+  grid-column: 2;
+}
+
+@media only screen and (max-width: 925px) {
+  #monsterStats, #stats {
+    padding-top: 0.1rem;
+  }
+  #monsterImage > img {
+    top: 5ch;
+    right: 5ch;
+    transition: 0.1s;
+    width: 20vw;
+  }
+  #stat-bar {
+    font-size: 1.2rem;
+    padding-left: 0rem;
+    padding-right: 0rem;
+    padding-top: 0.1rem;
+    transition: 0.1s;
+  }
+  #text {
+    padding: 0.2ch 6ch 0.2ch 1ch;
+    margin-top: 0.1ch;
+    border: var(--border-main);
+    transition: 0.1s;
+  }
+  button {
+    font-size: 1.2ch;
+    margin-right: -1.2ch;
+    transition: 0.1s;
+  }
+
+}
