@@ -24,6 +24,7 @@ body {
   overflow: hidden;
   color: var(--text-color);
   background-color: var(--shadow-color);
+  background-image: url('./locations/map.png');
   font-size: 5ch;
   padding: 1ch 2ch;
 }
@@ -93,7 +94,7 @@ button:active {
   margin-top: 1ch;
   border: 2ch solid transparent;
   padding: 0.5ch;
-  border-image: url(./borders/cave-border.png) 100 stretch;
+  border-image: url("") 100 stretch;
   max-height: 35%;
   overflow-y: scroll;
 }

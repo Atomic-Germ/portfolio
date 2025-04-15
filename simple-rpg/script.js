@@ -65,7 +65,8 @@ const locations = [
     "button text": ["HUNT MINIMON", "HUNT MONSTERS", "EXIT CAVE", "RESET"],
     "button functions": [fightGoatoad, fightGoatoadStrong, goTown, restart],
     text: "You enter the cave. You see some monsters.",
-    images: ["./locations/cave.png","./"]
+    images: ["./locations/cave.png"],
+    border: "url(./borders/cave-border.png) 100 100 stretch"
   },
   {
     name: "fight",
@@ -111,6 +112,7 @@ button3.onclick = gygaEncounter;
 button4.onclick = restart;
 
 function update(location) {
+  text.style.borderImage = "none";
   monsterStats.style.display = "none";
   monsterImage.style.display = "none";
   locationImage.style.display = "none";
@@ -145,6 +147,8 @@ function goCave() {
   locationImages = locations[2].images;
   locationImage.innerHTML = '<img src="' + locationImages[0] + '" />';
   locationImage.style.display = "flex";
+  text.style.borderImage = locations[2].border;
+    //"url(./borders/cave-border.png) 100 stretch"
 }
 
 function buyHealth() {
