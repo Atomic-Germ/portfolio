@@ -120,6 +120,7 @@ button:active {
   display: none;
 }
 
+/*
 @media screen and (max-width: 1000px) {
   #monsterImage {
     margin-top: -4ch;
@@ -148,4 +149,41 @@ button:active {
   #text {
     font-size: 80%;
   }
+}
+
+/* ----------- iPhone 6+, 7+ and 8+ ----------- */
+
+/* Portrait and Landscape */
+@media only screen
+  and (min-device-width: 414px)
+  and (max-device-width: 736px)
+  and (-webkit-min-device-pixel-ratio: 3) {
+    #game {
+      padding: 2px 2px 2px 2px;
+      margin: 2px 2px 2px 2px;
+    }
+}
+
+/* Portrait */
+@media only screen
+  and (min-device-width: 414px)
+  and (max-device-width: 736px)
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: portrait) {
+    #game {
+      padding: 2px 2px 2px 2px;
+      margin: 2px 2px 2px 2px;
+    }
+}
+
+/* Landscape */
+@media only screen
+  and (min-device-width: 414px)
+  and (max-device-width: 736px)
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: landscape) {
+    #game {
+      padding: 2px 2px 2px 2px;
+      margin: 2px 2px 2px 2px;
+    }
 }
