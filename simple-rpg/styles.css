@@ -9,20 +9,23 @@
   --window-color: rgb(135, 100, 100);
   --button-color: rgb(100, 100, 100); 
   --button-color-active: rgb(70, 70, 70); 
-  --shadows: rgb(5 10 15 / 80%);
-  --transition-time: 0.1s;
-  --window-background: var(--shadows);
-  --border-main: 4px solid var(--shadows);
+  --shadows: 0 8 16 0 var(--shadow-color);
+  --shadow-color: rgb(5 10 15 / 80%);
+  --window-background: var(--shadow-color);
+  --border-main: 4px solid var(--shadow-color);
 }
 
 * {
   font-family: 'JF Dot Shinonome Gothic 14'; font-weight: normal; font-style: normal;
+  transition: 0.1s;
 }
 
 body {
+  overflow: hidden;
   color: var(--text-color);
-  background-color: var(--shadows);
+  background-color: var(--shadow-color);
   font-size: 5ch;
+  padding: 1ch 2ch;
 }
 
 a {
@@ -36,53 +39,69 @@ button {
   text-align: center;
   cursor: initial;
   padding-bottom: auto;
+  width: 100%;
 }
 
 button:active {
   background-color: var(--button-color-active);
 }
 
+#controls {
+  display: inline-grid;
+}
+
 .stat {
   display: table;
   height: 2ch;
+  width: auto;
 }
 
 #game {
   background-color: var(--window-background);
-  border: var(--border-main);
-  height: 90%;
-  max-height: 90%;
   margin: auto;
   margin-top: 1ch;
   padding: 2ch;
+  height: 640px;
+  box-shadow: 0 8px 16px 0 var(--shadow-color);
+  border-radius: 1%;
+}
+
+#location {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+#location > img {
+  min-width: 100vw;
+  min-height: 100vh;
+  transition: none;
 }
 
 #stat-bar {
   display: grid;
   grid-gap: 1ch;
+  margin-left: 0.5ch;
+  margin-top: 0.5ch;
+  margin-bottom: 0ch;
 }
 
 #text {
-  background-color: rgba(30, 30, 30, 80%);
   padding: 0.2ch 1ch 0.2ch 1ch;
   margin-top: 1ch;
-  border: var(--border-main);
+  border: 2ch solid transparent;
+  padding: 0.5ch;
+  border-image: url(./borders/cave-border.png) 100 stretch;
+  max-height: 35%;
+  overflow-y: scroll;
 }
 
 #monsterStats, #stats {
   display: inline-grid;
   min-width: 30vw;
-  border: var(--border-main);
   height: 6ch; 
-  padding: 0ch 1ch;
-  /*  display: none; */
-}
-
-#monsterImage > img {
-  width: 10ch;
-  position: absolute;
-  top: 1ch;
-  right: 1ch;
 }
 
 #stats {
@@ -91,35 +110,41 @@ button:active {
 
 #monsterStats {
   grid-column: 2;
+  display: none;
 }
 
-@media only screen and (max-width: 925px) {
-  #monsterStats, #stats {
-    padding-top: 0.1rem;
+#monsterImage {
+  float:right;
+  margin-top: -2ch;
+  display: none;
+}
+
+@media screen and (max-width: 1000px) {
+  #monsterImage {
+    margin-top: -4ch;
   }
   #monsterImage > img {
-    top: 5ch;
-    right: 5ch;
-    transition: 0.1s;
-    width: 20vw;
+    height: 30vh;
   }
-  #stat-bar {
-    font-size: 1.2rem;
-    padding-left: 0rem;
-    padding-right: 0rem;
-    padding-top: 0.1rem;
-    transition: 0.1s;
+}
+
+@media screen and (max-width: 710px) {
+  #monsterStats, #stats {
+    font-size: 1ch;
+    padding: 1ch;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  #monsterImage > img {
+    height: 20vh;
+    margin: auto;
+    margin-top: 3.6ch;
+  }
+  #monsterStats, #stats {
+    padding: 0;
   }
   #text {
-    padding: 0.2ch 6ch 0.2ch 1ch;
-    margin-top: 0.1ch;
-    border: var(--border-main);
-    transition: 0.1s;
+    font-size: 80%;
   }
-  button {
-    font-size: 1.2ch;
-    margin-right: -1.2ch;
-    transition: 0.1s;
-  }
-
 }

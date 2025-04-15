@@ -9,6 +9,7 @@ let inventory = ["stick"];
 const button1 = document.querySelector('#button1');
 const button2 = document.querySelector("#button2");
 const button3 = document.querySelector("#button3");
+const button4 = document.querySelector("#button4");
 const text = document.querySelector("#text");
 const xpText = document.querySelector("#xpText");
 const healthText = document.querySelector("#healthText");
@@ -16,6 +17,8 @@ const goldText = document.querySelector("#goldText");
 const monsterStats = document.querySelector("#monsterStats");
 const monsterName = document.querySelector("#monsterName");
 const monsterHealthText = document.querySelector("#monsterHealth");
+const monsterImage = document.querySelector("#monsterImage");
+const locationImage = document.querySelector("#location");
 const weapons = [
   { name: 'STICK', power: 5 },
   { name: 'DAGGER', power: 30 },
@@ -24,16 +27,16 @@ const weapons = [
 ];
 const monsters = [
   {
-    name: "SLIME",
+    name: "GOATOAD",
     level: 1,
     health: 15,
-    images: ["./monsters/slime-one.png"]
+    images: ["./monsters/goatoad-one.png"]
   },
   {
-    name: "SLIME",
+    name: "GOATOAD",
     level: 14,
     health: 60,
-    images: ["./monsters/slime-two.png"]
+    images: ["./monsters/goatoad-two.png"]
   },
   {
     name: "DRAGON",
@@ -45,51 +48,59 @@ const monsters = [
 const locations = [
   {
     name: "town square",
-    "button text": ["SHOP", "EXIT TOWN", "FIGHT GYGADRAGON"],
-    "button functions": [goStore, goCave, gygaEncounter],
-    text: "You are in the town square. You see a sign that says \"STORE\"."
+    "button text": ["SHOP", "EXIT TOWN", "FIGHT GYGADRAGON", "RESET"],
+    "button functions": [goStore, goCave, gygaEncounter, restart],
+    text: "You are in the town square. You see a sign that says \"STORE\".",
+    images: ["./"]
   },
   {
     name: "store",
-    "button text": ["BUY 10 HEALTH (10 G)", "UPGRADE WEAPON (30 G)", "EXIT"],
-    "button functions": [buyHealth, buyWeapon, goTown],
-    text: "You enter the store."
+    "button text": ["10 HEALTH", "FULL HEALTH", "UPGRADE WEAPON", "EXIT"],
+    "button functions": [buyHealth, buyFullHealth, buyWeapon, goTown],
+    text: "You enter the store.",
+    images: ["./locations/item-shop.png","./people/shopkeepers/items-male.png"]
   },
   {
     name: "cave",
-    "button text": ["HUNT MINIMON", "HUNT MONSTERS", "EXIT CAVE"],
-    "button functions": [fightSlime, fightSlimeStrong, goTown],
-    text: "You enter the cave. You see some monsters."
+    "button text": ["HUNT MINIMON", "HUNT MONSTERS", "EXIT CAVE", "RESET"],
+    "button functions": [fightGoatoad, fightGoatoadStrong, goTown, restart],
+    text: "You enter the cave. You see some monsters.",
+    images: ["./locations/cave.png","./"]
   },
   {
     name: "fight",
-    "button text": ["ATTACK", "DODGE", "RUN"],
-    "button functions": [attack, dodge, goCave],
-    text: "You are fighting a monster."
+    "button text": ["ATTACK", "DODGE", "RUN", "HEAL"],
+    "button functions": [attack, dodge, goCave, buyHealth],
+    text: "You are fighting a monster.",
+    images: ["./"]
   },
   {
     name: "kill monster",
-    "button text": ["ENTER TOWN", "EXPLORE", "ENTER TOWN"],
-    "button functions": [goTown, goCave, goTown],
-    text: 'The monster screams "Arg!" as it dies. You gain experience points and find gold.'
+    "button text": ["ENTER TOWN", "EXPLORE", "ENTER TOWN", "HEAL"],
+    "button functions": [goTown, goCave, goTown, buyHealth],
+    text: 'The monster screams "Arg!" as it dies. You gain experience points and find gold.',
+    images: ["./"]
   },
   {
     name: "lose",
-    "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
-    "button functions": [restart, restart, restart],
-    text: "You die. &#x2620;"
+    "button text": ["REPLAY?", "REPLAY?", "REPLAY?", "REPLAY?"],
+    "button functions": [restart, restart, restart, restart],
+    text: "You die. &#x2620;",
+    images: ["./"]
   },
   { 
     name: "win", 
-    "button text": ["REPLAY?", "REPLAY?", "REPLAY?"], 
-    "button functions": [restart, restart, restart], 
-    text: "You defeat the dragon! YOU WIN THE GAME! &#x1F389;" 
+    "button text": ["REPLAY?", "REPLAY?", "REPLAY?", "REPLAY?"],
+    "button functions": [restart, restart, restart, restart],
+    text: "You defeat the dragon! YOU WIN THE GAME! &#x1F389;", 
+    images: ["./"]
   },
   {
     name: "easter egg",
-    "button text": ["2", "8", "ENTER TOWN"],
-    "button functions": [pickTwo, pickEight, goTown],
-    text: "You find a secret game. Pick a number above. Ten numbers will be randomly chosen between 0 and 10. If the number you choose matches one of the random numbers, you win!"
+    "button text": ["2", "8", "ENTER TOWN", "RESET"],
+    "button functions": [pickTwo, pickEight, goTown, restart],
+    text: "You find a secret game. Pick a number above. Ten numbers will be randomly chosen between 0 and 10. If the number you choose matches one of the random numbers, you win!",
+    images: ["./"]
   }
 ];
 
@@ -97,16 +108,23 @@ const locations = [
 button1.onclick = goStore;
 button2.onclick = goCave;
 button3.onclick = gygaEncounter;
+button4.onclick = restart;
 
 function update(location) {
   monsterStats.style.display = "none";
+  monsterImage.style.display = "none";
+  locationImage.style.display = "none";
+  text.style.height = "1px"
   button1.innerText = location["button text"][0];
   button2.innerText = location["button text"][1];
   button3.innerText = location["button text"][2];
+  button4.innerText = location["button text"][3];
   button1.onclick = location["button functions"][0];
   button2.onclick = location["button functions"][1];
   button3.onclick = location["button functions"][2];
+  button4.onclick = location["button functions"][3];
   text.innerHTML = location.text;
+  text.style.height = "auto";
 }
 
 function goTown() {
@@ -115,10 +133,18 @@ function goTown() {
 
 function goStore() {
   update(locations[1]);
+  locationImages = locations[1].images;
+  locationImage.innerHTML = '<img src="' + locationImages[0] + '" />';
+  monsterImage.innerHTML = '<img src="' + locationImages[1] + '" />';
+  locationImage.style.display = "flex";
+  monsterImage.style.display = "block";
 }
 
 function goCave() {
   update(locations[2]);
+  locationImages = locations[2].images;
+  locationImage.innerHTML = '<img src="' + locationImages[0] + '" />';
+  locationImage.style.display = "flex";
 }
 
 function buyHealth() {
@@ -128,7 +154,18 @@ function buyHealth() {
     goldText.innerText = gold;
     healthText.innerText = health;
   } else {
-    text.innerText = "You do not have enough gold to buy health.";
+    text.innerText = "You do not have enough gold to health.";
+  }
+}
+
+function buyFullHealth() {
+  if (gold >= 100 - health) {
+    gold -= 100 - health;
+    health += 100 - health;
+    goldText.innerText = gold;
+    healthText.innerText = health;
+  } else {
+    text.innerText = "You do not have enough gold to health.";
   }
 }
 
@@ -143,7 +180,7 @@ function buyWeapon() {
       inventory.push(newWeapon);
       text.innerText += " In your inventory you have: " + inventory;
     } else {
-      text.innerText = "You do not have enough gold to buy a weapon.";
+      text.innerText = "You do not have enough gold to a weapon.";
     }
   } else {
     text.innerText = "You already have the most powerful weapon!";
@@ -164,12 +201,12 @@ function sellWeapon() {
   }
 }
 
-function fightSlime() {
+function fightGoatoad() {
   fighting = 0;
   goFight();
 }
 
-function fightSlimeStrong() {
+function fightGoatoadStrong() {
   fighting = 1;
   goFight();
 }
@@ -184,6 +221,7 @@ function goFight() {
   monsterHealth = monsters[fighting].health;
   monsterImages = monsters[fighting].images;
   monsterStats.style.display = "block";
+  monsterImage.style.display = "block";
   monsterName.innerText = monsters[fighting].name;
   monsterHealthText.innerText = monsterHealth;
   monsterImage.innerHTML = '<img src="' + monsterImages[0] + '" />';
