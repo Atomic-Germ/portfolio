@@ -120,70 +120,83 @@ button:active {
   display: none;
 }
 
-/*
-@media screen and (max-width: 1000px) {
-  #monsterImage {
-    margin-top: -4ch;
-  }
-  #monsterImage > img {
-    height: 30vh;
-  }
-}
+/* Screens, screens, screens */
+/* ----------- iPhones ----------- */
 
-@media screen and (max-width: 710px) {
-  #monsterStats, #stats {
-    font-size: 1ch;
-    padding: 1ch;
-  }
-}
-
-@media screen and (max-width: 520px) {
-  #monsterImage > img {
-    height: 20vh;
-    margin: auto;
-    margin-top: 3.6ch;
-  }
-  #monsterStats, #stats {
-    padding: 0;
-  }
-  #text {
-    font-size: 80%;
-  }
-}
-
-/* ----------- iPhone 6+, 7+ and 8+ ----------- */
-
+/* 16 Pro */
 /* Portrait and Landscape */
 @media only screen
-  and (min-device-width: 414px)
-  and (max-device-width: 736px)
+  and (min-device-width: 402px)
+  and (max-device-width: 874px)
   and (-webkit-min-device-pixel-ratio: 3) {
+   * {
+   }
     #game {
-      padding: 2px 2px 2px 2px;
-      margin: 2px 2px 2px 2px;
+      margin: auto;
+      padding: auto;
     }
 }
 
 /* Portrait */
 @media only screen
-  and (min-device-width: 414px)
-  and (max-device-width: 736px)
+  and (min-device-width: 402px)
+  and (max-device-width: 874px)
   and (-webkit-min-device-pixel-ratio: 3)
   and (orientation: portrait) {
     #game {
-      padding: 2px 2px 2px 2px;
-      margin: 2px 2px 2px 2px;
+      width: 80vw;
+      height: 90vh;
     }
-}
+    #text {
+      border: 1px solid transparent;
+      font-size: 4rem;
+      width: 75vw;
+      max-height: 6em;
+      margin: auto;
+      margin-top: 30vh;
+      word-wrap: break-word;
+      overflow-x: hidden;
+      border-radius: 1rem;
+      box-shadow: 0vh 0vw 1vh white; 
+    }
+    #monsterImage {
+      position: absolute;
+      top: 10vh;
+      left: 50vw;
+      padding: 0px;
+      margin: 0px;
+      width: content;
+      height: content;
+    }
+    #monsterImage > img {
+      width: 40vw;
+      filter: drop-shadow(0vh 0vw 5px white); 
+    }
+    #controls{
+      width: 80vw;
+      position: absolute;
+      bottom: 6vh;
+      display: inline-grid;
+      grid-gap: 1ch;
+    }
+    #controls > button {
+      height: 1.5em;
+      border-radius: 15px;
+      font-size: 2em;
+      color: var(--text-color);
+      white-space: nowrap;
+    }
+  }
 
 /* Landscape */
 @media only screen
-  and (min-device-width: 414px)
-  and (max-device-width: 736px)
+  and (min-device-width: 402px)
+  and (max-device-width: 874px)
   and (-webkit-min-device-pixel-ratio: 3)
   and (orientation: landscape) {
+    html {
+      width: 100%;
+    }
     #game {
-      padding: 2px 2px 2px 2px;
-      margin: 2px 2px 2px 2px;
     }
 }
