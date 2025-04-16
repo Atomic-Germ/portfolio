@@ -126,7 +126,7 @@ button:active {
 /* 16 Pro */
 /* Portrait and Landscape */
 @media only screen
-  and (min-device-width: 402px)
+  and (min-device-width: 400px)
   and (max-device-width: 874px)
   and (-webkit-min-device-pixel-ratio: 3) {
    * {
@@ -139,7 +139,7 @@ button:active {
 
 /* Portrait */
 @media only screen
-  and (min-device-width: 402px)
+  and (min-device-width: 400px)
   and (max-device-width: 874px)
   and (-webkit-min-device-pixel-ratio: 3)
   and (orientation: portrait) {
@@ -190,7 +190,7 @@ button:active {
 
 /* Landscape */
 @media only screen
-  and (min-device-width: 402px)
+  and (min-device-width: 400px)
   and (max-device-width: 874px)
   and (-webkit-min-device-pixel-ratio: 3)
   and (orientation: landscape) {
