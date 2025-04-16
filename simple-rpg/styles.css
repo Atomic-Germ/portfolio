@@ -127,7 +127,7 @@ button:active {
 /* Portrait and Landscape */
 @media only screen
   and (min-device-width: 36px)
-  and (max-device-width: 874px)
+  and (max-device-width: 2040px)
   and (-webkit-min-device-pixel-ratio: 3) {
    * {
    }
@@ -140,7 +140,7 @@ button:active {
 /* Portrait */
 @media only screen
   and (min-device-width: 36px)
-  and (max-device-width: 874px)
+  and (max-device-width: 2040px)
   and (-webkit-min-device-pixel-ratio: 3)
   and (orientation: portrait) {
     #game {
@@ -191,7 +191,7 @@ button:active {
 /* Landscape */
 @media only screen
   and (min-device-width: 36px)
-  and (max-device-width: 874px)
+  and (max-device-width: 2040px)
   and (-webkit-min-device-pixel-ratio: 3)
   and (orientation: landscape) {
     html {
