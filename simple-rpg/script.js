@@ -6,7 +6,8 @@ let fighting;
 let monsterHealth;
 let inventory = ["stick"];
 
-const button1 = document.querySelector('#button1');
+const body = document.querySelector("body");
+const button1 = document.querySelector("#button1");
 const button2 = document.querySelector("#button2");
 const button3 = document.querySelector("#button3");
 const button4 = document.querySelector("#button4");
@@ -49,23 +50,23 @@ const locations = [
   {
     name: "town square",
     "button text": ["SHOP", "EXIT TOWN", "FIGHT GYGADRAGON", "RESET"],
-    "button functions": [goStore, goCave, gygaEncounter, restart],
+    "button functions": [goShop, goCave, gygaEncounter, restart],
     text: "You are in the town square. You see a sign that says \"STORE\".",
-    images: ["./"]
+    images: ["url(./locations/map.png)"]
   },
   {
     name: "store",
     "button text": ["10 HEALTH", "FULL HEALTH", "UPGRADE WEAPON", "EXIT"],
     "button functions": [buyHealth, buyFullHealth, buyWeapon, goTown],
     text: "You enter the store.",
-    images: ["./locations/item-shop.png","./people/shopkeepers/items-male.png"]
+    images: ["url(./locations/item-shop.png)","./people/shopkeepers/items-male.png"]
   },
   {
     name: "cave",
     "button text": ["HUNT MINIMON", "HUNT MONSTERS", "EXIT CAVE", "RESET"],
     "button functions": [fightGoatoad, fightGoatoadStrong, goTown, restart],
     text: "You enter the cave. You see some monsters.",
-    images: ["./locations/cave.png"],
+    images: ["url(./locations/cave.png)"],
     border: "url(./borders/cave-border.png) 100 100 stretch"
   },
   {
@@ -106,7 +107,7 @@ const locations = [
 ];
 
 // initialize buttons
-button1.onclick = goStore;
+button1.onclick = goShop;
 button2.onclick = goCave;
 button3.onclick = gygaEncounter;
 button4.onclick = restart;
@@ -115,7 +116,7 @@ function update(location) {
   text.style.borderImage = "none";
   monsterStats.style.display = "none";
   monsterImage.style.display = "none";
-  locationImage.style.display = "none";
+  body.style.backgroundImage = location["images"][0];
   text.style.height = "1px"
   button1.innerText = location["button text"][0];
   button2.innerText = location["button text"][1];
@@ -133,20 +134,18 @@ function goTown() {
   update(locations[0]);
 }
 
-function goStore() {
+function goShop() {
   update(locations[1]);
   locationImages = locations[1].images;
-  locationImage.innerHTML = '<img src="' + locationImages[0] + '" />';
+  body.style.backgroundImage = locationImages[0];
   monsterImage.innerHTML = '<img src="' + locationImages[1] + '" />';
-  locationImage.style.display = "flex";
   monsterImage.style.display = "block";
 }
 
 function goCave() {
   update(locations[2]);
   locationImages = locations[2].images;
-  locationImage.innerHTML = '<img src="' + locationImages[0] + '" />';
-  locationImage.style.display = "flex";
+  body.style.backgroundImage = locationImages[0];
   text.style.borderImage = locations[2].border;
     //"url(./borders/cave-border.png) 100 stretch"
 }
@@ -333,3 +332,5 @@ function pick(guess) {
     }
   }
 }
+
+goTown();
