@@ -1,4 +1,4 @@
-let xp = 0;
+let level = 0;
 let health = 100;
 let gold = 50;
 let currentWeapon = 0;
@@ -12,7 +12,7 @@ const button2 = document.querySelector("#button2");
 const button3 = document.querySelector("#button3");
 const button4 = document.querySelector("#button4");
 const text = document.querySelector("#text");
-const xpText = document.querySelector("#xpText");
+const levelText = document.querySelector("#levelText");
 const healthText = document.querySelector("#healthText");
 const goldText = document.querySelector("#goldText");
 const monsterStats = document.querySelector("#monsterStats");
@@ -49,22 +49,22 @@ const monsters = [
 const locations = [
   {
     name: "town square",
-    "button text": ["SHOP", "EXIT TOWN", "FIGHT GYGADRAGON", "RESET"],
-    "button functions": [goShop, goCave, gygaEncounter, restart],
-    text: "You are in the town square. You see a sign that says \"STORE\".",
-    images: ["url(./locations/map.png)"]
+    "button text": ["SHOP", "EXIT TOWN", "GYGA", "RESET"],
+    "button functions": [goShop, goFeild, gygaEncounter, restart],
+    text: "You are in the town square. You see a sign that says \"SHOP\".",
+    images: ["url(./locations/town-square.png)"]
   },
   {
-    name: "store",
+    name: "shop",
     "button text": ["10 HEALTH", "FULL HEALTH", "UPGRADE WEAPON", "EXIT"],
     "button functions": [buyHealth, buyFullHealth, buyWeapon, goTown],
-    text: "You enter the store.",
+    text: "You enter the shop.",
     images: ["url(./locations/item-shop.png)","./people/shopkeepers/items-male.png"]
   },
   {
     name: "cave",
     "button text": ["HUNT MINIMON", "HUNT MONSTERS", "EXIT CAVE", "RESET"],
-    "button functions": [fightGoatoad, fightGoatoadStrong, goTown, restart],
+    "button functions": [fightGoatoad, fightGoatoadStrong, goFeild, restart],
     text: "You enter the cave. You see some monsters.",
     images: ["url(./locations/cave.png)"],
     border: "url(./borders/cave-border.png) 100 100 stretch"
@@ -78,9 +78,9 @@ const locations = [
   },
   {
     name: "kill monster",
-    "button text": ["ENTER TOWN", "EXPLORE", "ENTER TOWN", "HEAL"],
-    "button functions": [goTown, goCave, goTown, buyHealth],
-    text: 'The monster screams "Arg!" as it dies. You gain experience points and find gold.',
+    "button text": ["ENTER TOWN", "EXLORE", "EXIT CAVE", "HEAL"],
+    "button functions": [goTown, goCave, goFeild, buyHealth],
+    text: 'The monster screams "Arg!" as it dies. You gain elevelerience points and find gold.',
     images: ["./"]
   },
   {
@@ -103,6 +103,13 @@ const locations = [
     "button functions": [pickTwo, pickEight, goTown, restart],
     text: "You find a secret game. Pick a number above. Ten numbers will be randomly chosen between 0 and 10. If the number you choose matches one of the random numbers, you win!",
     images: ["./"]
+  },
+  {
+    name: "feild",
+    "button text": ["CAVE", "TOWN", "REST", "ITEM"],
+    "button functions": [goCave, goTown, buyFullHealth, buyHealth],
+    text: "You are in the feilds exploring, there is a cave and a town nearby.",
+    images: ["url(./locations/map.png)"]
   }
 ];
 
@@ -127,6 +134,9 @@ function update(location) {
   button3.onclick = location["button functions"][2];
   button4.onclick = location["button functions"][3];
   text.innerHTML = location.text;
+  goldText.innerText = gold;
+  levelText.innerText = level;
+  healthText.innerText = health;
   text.style.height = "auto";
 }
 
@@ -147,17 +157,25 @@ function goCave() {
   locationImages = locations[2].images;
   body.style.backgroundImage = locationImages[0];
   text.style.borderImage = locations[2].border;
-    //"url(./borders/cave-border.png) 100 stretch"
+  text.style.backgroundColor = "transparent";
+}
+
+function goFeild() {
+  update(locations[8]);
+  locationImages = locations[8].images;
+  body.style.backgroundImage = locationImages[0];
 }
 
 function buyHealth() {
-  if (gold >= 10) {
+  if (gold >= 10 && health < 100) {
     gold -= 10;
     health += 10;
     goldText.innerText = gold;
     healthText.innerText = health;
-  } else {
-    text.innerText = "You do not have enough gold to health.";
+  } else if (gold < 10 ) {
+    text.innerText = "You don't have enough to cover the bill!";
+  } else if (health >= 100 ) {
+    text.innerText = "You do not need to heal.";
   }
 }
 
@@ -167,7 +185,7 @@ function buyFullHealth() {
     health += 100 - health;
     goldText.innerText = gold;
     healthText.innerText = health;
-  } else {
+  } else if (health >= 100 ) {
     text.innerText = "You do not have enough gold to health.";
   }
 }
@@ -183,7 +201,7 @@ function buyWeapon() {
       inventory.push(newWeapon);
       text.innerText += " In your inventory you have: " + inventory;
     } else {
-      text.innerText = "You do not have enough gold to a weapon.";
+      text.innerText = "You can't afford it!";
     }
   } else {
     text.innerText = "You already have the most powerful weapon!";
@@ -235,7 +253,7 @@ function attack() {
   text.innerText += " You attack it with your " + weapons[currentWeapon].name + ".";
   health -= getMonsterAttackValue(monsters[fighting].level);
   if (isMonsterHit()) {
-    monsterHealth -= weapons[currentWeapon].power + Math.floor(Math.random() * xp) + 1;    
+    monsterHealth -= weapons[currentWeapon].power + Math.floor(Math.random() * level) + 1;    
   } else {
     text.innerText += " You miss.";
   }
@@ -257,7 +275,7 @@ function attack() {
 }
 
 function getMonsterAttackValue(level) {
-  const hit = (level * 5) - (Math.floor(Math.random() * xp));
+  const hit = (level * 5) - (Math.floor(Math.random() * level));
   console.log(hit);
   return hit > 0 ? hit : 0;
 }
@@ -272,9 +290,9 @@ function dodge() {
 
 function defeatMonster() {
   gold += Math.floor(monsters[fighting].level * 6.7);
-  xp += monsters[fighting].level;
+  level += monsters[fighting].level;
   goldText.innerText = gold;
-  xpText.innerText = xp;
+  levelText.innerText = level;
   update(locations[4]);
 }
 
@@ -287,14 +305,14 @@ function winGame() {
 }
 
 function restart() {
-  xp = 0;
+  level = 0;
   health = 100;
   gold = 50;
   currentWeapon = 0;
   inventory = ["stick"];
   goldText.innerText = gold;
   healthText.innerText = health;
-  xpText.innerText = xp;
+  levelText.innerText = level;
   goTown();
 }
 
@@ -333,4 +351,4 @@ function pick(guess) {
   }
 }
 
-goTown();
+goFeild();

@@ -233,7 +233,7 @@ section:last-child {
 .dropdown {
   position: fixed;
   text-align: right;
-  display: inline-block;
+  display: inline-table;
   top: 1rem;
   right: 14rem;
 }
@@ -241,7 +241,7 @@ section:last-child {
 #music-menu.dropdown {
   position: fixed;
   text-align: right;
-  display: inline-block;
+  display: inline-table;
   top: 1rem;
   right: 19rem;
 }
@@ -326,3 +326,48 @@ iframe {
     margin: 1vh auto;
   }
 }
+
+/* ----------- iPhones ----------- */
+
+/* 16 Pro */
+@media only screen
+  and (min-device-width: 402px)
+  and (max-device-width: 847px)
+  and (-webkit-min-device-pixel-ratio: 3) {
+
+  }
+
+/* Portrait */
+@media only screen
+  and (min-device-width: 402px)
+  and (max-device-width: 847px)
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: portrait) {
+    #welcome-link {
+      display: none;
+    }
+    #welcome-section p {
+      margin-inline-start: 1vw;
+      margin-inline-end: 1vw;
+    }
+    nav {
+      font-size: 0.7rem;
+    }
+    #code-menu > a {
+      margin: 0px;
+    }
+    #music-menu > div > div {
+      position: absolute;
+      text-align: right;
+      top: 0px;
+      left: 50px;
+    }
+  }
+
+/* Landscape */
+@media only screen
+  and (min-device-width: 402px)
+  and (max-device-width: 847px)
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: landscape) {
+  }

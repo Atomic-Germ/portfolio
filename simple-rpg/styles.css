@@ -11,7 +11,7 @@
   --button-color-active: rgb(70, 70, 70); 
   --shadows: 0 8 16 0 var(--shadow-color);
   --shadow-color: rgb(5 10 15 / 80%);
-  --window-background: var(--shadow-color);
+  --window-background: rgb(10 15 20 / 80%);
   --border-main: 4px solid var(--shadow-color);
 }
 
@@ -23,11 +23,9 @@
 body {
   overflow: hidden;
   color: var(--text-color);
-  background-attachment: fixed;
-  background-size: 100vw 100vh;
+  background: url(./locations/map.png) no-repeat center fixed;
+  background-size: cover;
   background-color: var(--shadow-color);
-  background-repeat: no-repeat;
-  font-size: 5ch;
   padding: 1ch 2ch;
 }
 
@@ -36,7 +34,6 @@ a {
 }
 
 button {
-  font-size: 1.5ch;
   background-color: var(--button-color);
   border: var(--border-main);
   text-align: center;
@@ -84,6 +81,7 @@ button:active {
 }
 
 #stat-bar {
+  background-color: var(--shadow-color);
   display: grid;
   grid-gap: 1ch;
   margin-left: 0.5ch;
@@ -92,6 +90,7 @@ button:active {
 }
 
 #text {
+  background-color: var(--shadow-color);
   padding: 0.2ch 1ch 0.2ch 1ch;
   margin-top: 1ch;
   border: 2ch solid transparent;
@@ -120,6 +119,7 @@ button:active {
   float:right;
   margin-top: -2ch;
   display: none;
+  z-index: 1;
 }
     
 #monsterImage > img {
@@ -141,15 +141,16 @@ button:active {
     }
     #text {
       border: 1px solid transparent;
-      font-size: 4rem;
       margin: auto;
       word-wrap: break-word;
       overflow-x: hidden;
       border-radius: 1rem;
-      box-shadow: 0vh 0vw 1vh white; 
+      box-shadow: 0vh 0vw 1vh white;
+      z-index: 0;
     }
-    #controls > button {
+    #controls button {
       color: var(--text-color);
+      font-size: 6em;
     }
 }
 
@@ -159,11 +160,15 @@ button:active {
   and (max-device-width: 847px)
   and (-webkit-min-device-pixel-ratio: 3)
   and (orientation: portrait) {
+    #monsterStats, #stats {
+      font-size: 3em;
+    }
     #text {
       width: 75vw;
       max-height: 10vh;
       position: absolute;
       top: 41vh;
+      font-size: 4em;
     }
     #monsterImage {
       position: absolute;
@@ -181,15 +186,14 @@ button:active {
     #controls{
       width: 80vw;
       position: absolute;
-      bottom: 1px;
-      display: inline-grid;
-      grid-gap: 1vh;
+      bottom: 5vh;
+      display: table;
     }
     #controls > button {
+      padding: 0px;
       min-height: 6vh;
       max-height: 6vh;
       border-radius: 15px;
-      font-size: 2em;
       white-space: nowrap;
     }
   }
