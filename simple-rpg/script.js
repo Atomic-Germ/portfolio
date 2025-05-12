@@ -11,7 +11,7 @@ const button1 = document.querySelector("#button1");
 const button2 = document.querySelector("#button2");
 const button3 = document.querySelector("#button3");
 const button4 = document.querySelector("#button4");
-const text = document.querySelector("#text");
+const text = document.querySelector(".text");
 const levelText = document.querySelector("#levelText");
 const healthText = document.querySelector("#healthText");
 const goldText = document.querySelector("#goldText");
@@ -20,30 +20,43 @@ const monsterName = document.querySelector("#monsterName");
 const monsterHealthText = document.querySelector("#monsterHealth");
 const monsterImage = document.querySelector("#monsterImage");
 const locationImage = document.querySelector("#location");
+const audio = new Audio();
+
 const weapons = [
   { name: 'STICK', power: 5 },
   { name: 'DAGGER', power: 30 },
   { name: 'CLAW HAMMER', power: 50 },
-  { name: 'SWORD', power: 100 }
+  { name: 'SWORD', power: 100 },
+  { name: 'GREAT SWORD', power: 150 }
 ];
 const monsters = [
   {
     name: "GOATOAD",
     level: 1,
     health: 15,
-    images: ["./monsters/goatoad-one.png"]
+    images: ["./monsters/goatoad-one.png"],
+    music: ["./audio/fight_1.mp3"]
   },
   {
-    name: "GOATOAD",
-    level: 14,
+    name: "GREATOAD",
+    level: 4,
     health: 60,
-    images: ["./monsters/goatoad-two.png"]
+    images: ["./monsters/goatoad-two.png"],
+    music: ["./audio/fight_1.mp3"]
+  },
+  {
+    name: "DRAKE",
+    level: 10,
+    health: 100,
+    images: ["./monsters/dragon-normal.png"],
+    music: ["./audio/fight_1.mp3"]
   },
   {
     name: "DRAGON",
-    level: 20,
+    level: 15,
     health: 300,
-    images: ["./monsters/dragon-normal.png"]
+    images: ["./monsters/dragon-strong.png"],
+    music: ["./audio/fight_0.mp3"]
   }
 ]
 const locations = [
@@ -52,29 +65,32 @@ const locations = [
     "button text": ["SHOP", "EXIT TOWN", "GYGA", "RESET"],
     "button functions": [goShop, goFeild, gygaEncounter, restart],
     text: "You are in the town square. You see a sign that says \"SHOP\".",
-    images: ["url(./locations/town-square.png)"]
+    images: ["url(./locations/town-square.png)"],
+    music: ["./audio/town_0.mp3"]
   },
   {
     name: "shop",
     "button text": ["10 HEALTH", "FULL HEALTH", "UPGRADE WEAPON", "EXIT"],
     "button functions": [buyHealth, buyFullHealth, buyWeapon, goTown],
-    text: "You enter the shop.",
-    images: ["url(./locations/item-shop.png)","./people/shopkeepers/items-male.png"]
+    text: "\'Hi! What can I do ya for?\'",
+    images: ["url(./locations/item-shop.png)","./people/shopkeepers/items-male.png"],
+    music: ["./audio/shop_0.mp3"]
   },
   {
     name: "cave",
     "button text": ["HUNT MINIMON", "HUNT MONSTERS", "EXIT CAVE", "RESET"],
-    "button functions": [fightGoatoad, fightGoatoadStrong, goFeild, restart],
+    "button functions": [fightGoatoad, fightGreatoad, goFeild, restart],
     text: "You enter the cave. You see some monsters.",
     images: ["url(./locations/cave.png)"],
-    border: "url(./borders/cave-border.png) 100 100 stretch"
+    music: ["./audio/cave_0.mp3","./audio/cave_1.mp3"],
+    border: ["url(./borders/cave-border.png) 100 100 stretch"]
   },
   {
     name: "fight",
     "button text": ["ATTACK", "DODGE", "RUN", "HEAL"],
     "button functions": [attack, dodge, goCave, buyHealth],
-    text: "You are fighting a monster.",
-    images: ["./"]
+    text: "A monster has appeared.",
+    images: ["./"],
   },
   {
     name: "kill monster",
@@ -88,7 +104,8 @@ const locations = [
     "button text": ["REPLAY?", "REPLAY?", "REPLAY?", "REPLAY?"],
     "button functions": [restart, restart, restart, restart],
     text: "You die. &#x2620;",
-    images: ["./"]
+    images: ["./"],
+    music: ["./audio/lose.mp3"]
   },
   { 
     name: "win", 
@@ -109,7 +126,8 @@ const locations = [
     "button text": ["CAVE", "TOWN", "REST", "ITEM"],
     "button functions": [goCave, goTown, buyFullHealth, buyHealth],
     text: "You are in the feilds exploring, there is a cave and a town nearby.",
-    images: ["url(./locations/map.png)"]
+    images: ["url(./locations/map.png)"],
+    music: ["./audio/feild_0.mp3"]
   }
 ];
 
@@ -138,14 +156,21 @@ function update(location) {
   levelText.innerText = level;
   healthText.innerText = health;
   text.style.height = "auto";
+  audio.pause();
 }
 
 function goTown() {
-  update(locations[0]);
+  update(locations[0]); 
+  audio.src = locations[0].music[0];
+  audio.loop = true;
+  audio.play();
 }
 
 function goShop() {
   update(locations[1]);
+  audio.src = locations[1].music[0];
+  audio.loop = true;
+  audio.play();
   locationImages = locations[1].images;
   body.style.backgroundImage = locationImages[0];
   monsterImage.innerHTML = '<img src="' + locationImages[1] + '" />';
@@ -154,6 +179,9 @@ function goShop() {
 
 function goCave() {
   update(locations[2]);
+  audio.src = locations[2].music[0];
+  audio.loop = true;
+  audio.play();
   locationImages = locations[2].images;
   body.style.backgroundImage = locationImages[0];
   text.style.borderImage = locations[2].border;
@@ -162,6 +190,9 @@ function goCave() {
 
 function goFeild() {
   update(locations[8]);
+  audio.src = locations[8].music[0];
+  audio.loop = true;
+  audio.play();
   locationImages = locations[8].images;
   body.style.backgroundImage = locationImages[0];
 }
@@ -222,23 +253,31 @@ function sellWeapon() {
   }
 }
 
-function fightGoatoad() {
+function fightGoatoad () {
   fighting = 0;
   goFight();
 }
 
-function fightGoatoadStrong() {
+function fightGreatoad() {
   fighting = 1;
   goFight();
 }
 
-function gygaEncounter() {
+function fightDrake() {
   fighting = 2;
+  goFight();
+}
+
+function gygaEncounter() {
+  fighting = 3;
   goFight();
 }
 
 function goFight() {
   update(locations[3]);
+  audio.src = monsters[fighting].music[0];
+  audio.loop = true;
+  audio.play();
   monsterHealth = monsters[fighting].health;
   monsterImages = monsters[fighting].images;
   monsterStats.style.display = "block";
@@ -246,6 +285,7 @@ function goFight() {
   monsterName.innerText = monsters[fighting].name;
   monsterHealthText.innerText = monsterHealth;
   monsterImage.innerHTML = '<img src="' + monsterImages[0] + '" />';
+  text.innerText = "A " + monsters[fighting].name + " appears!" ;
 }
 
 function attack() {
@@ -280,9 +320,7 @@ function getMonsterAttackValue(level) {
   return hit > 0 ? hit : 0;
 }
 
-function isMonsterHit() {
-  return Math.random() > .2 || health < 20;
-}
+const isMonsterHit = _ => Math.random() > .2 || health < 20;
 
 function dodge() {
   text.innerText = "You dodge the attack from the " + monsters[fighting].name;
@@ -297,7 +335,10 @@ function defeatMonster() {
 }
 
 function lose() {
+  audio.src = locations[5].music[0];
+  audio.loop = true;
   update(locations[5]);
+  audio.play();
 }
 
 function winGame() {
@@ -313,7 +354,7 @@ function restart() {
   goldText.innerText = gold;
   healthText.innerText = health;
   levelText.innerText = level;
-  goTown();
+  goFeild();
 }
 
 function easterEgg() {
