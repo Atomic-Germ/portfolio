@@ -21,6 +21,7 @@ const monsterHealthText = document.querySelector("#monsterHealth");
 const monsterImage = document.querySelector("#monsterImage");
 const locationImage = document.querySelector("#location");
 const audio = new Audio();
+const sfx = new Audio();
 
 const weapons = [
   { name: 'STICK', power: 5 },
@@ -228,6 +229,9 @@ function buyWeapon() {
       currentWeapon++;
       goldText.innerText = gold;
       let newWeapon = weapons[currentWeapon].name;
+      sfx.src = "./audio/buy_sell.mp3";
+      sfx.loop = false;
+      sfx.play();
       text.innerText = "You now have a " + newWeapon + ".";
       inventory.push(newWeapon);
       text.innerText += " In your inventory you have: " + inventory;
@@ -293,9 +297,15 @@ function attack() {
   text.innerText += " You attack it with your " + weapons[currentWeapon].name + ".";
   health -= getMonsterAttackValue(monsters[fighting].level);
   if (isMonsterHit()) {
+    sfx.src = "./audio/impact.mp3";
+    sfx.loop = false;
+    sfx.play();
     monsterHealth -= weapons[currentWeapon].power + Math.floor(Math.random() * level) + 1;    
   } else {
     text.innerText += " You miss.";
+    sfx.src = "./audio/miss.mp3";
+    sfx.loop = false;
+    sfx.play();
   }
   healthText.innerText = health;
   monsterHealthText.innerText = monsterHealth;
