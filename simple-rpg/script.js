@@ -169,6 +169,14 @@ function update(location) {
   button2.onclick = location["button functions"][1];
   button3.onclick = location["button functions"][2];
   button4.onclick = location["button functions"][3];
+  button1.disabled = false;
+  button2.disabled = false;
+  button3.disabled = false;
+  button4.disabled = false;
+  button1.style.backgroundColor = "var(--button-color)";
+  button2.style.backgroundColor = "var(--button-color)";
+  button3.style.backgroundColor = "var(--button-color)";
+  button4.style.backgroundColor = "var(--button-color)";
   text.innerHTML = location.text;
   goldText.innerText = gold;
   levelText.innerText = level;
@@ -225,15 +233,18 @@ function buyHealth() {
 }
 
 function itemHealth() {
-  if (items["health"] != 0) {
-    health += 10;
+  if (items["health"] > 0 && health < 100) {
     items["health"]--;
+    button4.disabled = true;
+    button4.style.backgroundColor = "var(--button-color-active)";
+    text.innerText = `+${100 - health} health, ${items["health"] + 1} healing potions left.`;
+    health += 100 - health;
     healthText.innerText = health;
-    text.innerText = `+10 health, ${items["health"] + 1} healing potions left.`;
+  } else if (health >= 100) {
+    text.innerText = "Can't restore above 100 health with this item.";
   } else {
     text.innerText = "No healing potions remaining.";
   }
-  health -= getMonsterAttackValue(monsters[fighting].level);
 }
 
 function buyFullHealth() {
@@ -367,6 +378,10 @@ function attack() {
     } else {
       defeatMonster();
     }
+  }
+  if (items["health"] > 1) {
+    button4.disabled = false;
+    button4.style.backgroundColor = "var(--button-color)";
   }
   healthText.innerText = health;
   monsterHealthText.innerText = monsterHealth;
