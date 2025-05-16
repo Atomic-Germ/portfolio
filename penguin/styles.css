@@ -66,11 +66,7 @@ body {
 .penguin-head {
   width: 50%;
   height: 45%;
-  background: linear-gradient(
-    45deg,
-    var(--penguin-skin),
-    rgb(239, 240, 228)
-  );
+  background: linear-gradient(45deg, var(--penguin-skin), rgb(239, 240, 228));
   border-radius: 70% 70% 65% 65%;
   top: 10%;
   left: 25%;
@@ -162,7 +158,9 @@ body {
 }
 
 .shirt {
-  font: bold 25px Helvetica, sans-serif;
+  font:
+    bold 25px Helvetica,
+    sans-serif;
   top: 165px;
   left: 127.5px;
   z-index: 1;
@@ -170,7 +168,7 @@ body {
 }
 
 .shirt div {
-  font-weight:  initial;
+  font-weight: initial;
   top: 22.5px;
   left: 12px;
 }
@@ -204,11 +202,7 @@ body {
 .arm {
   width: 30%;
   height: 60%;
-  background: linear-gradient(
-    90deg,
-    var(--penguin-skin),
-    rgb(209, 210, 199)
-  );
+  background: linear-gradient(90deg, var(--penguin-skin), rgb(209, 210, 199));
   border-radius: 30% 30% 30% 120%;
   z-index: -1;
 }
@@ -216,7 +210,7 @@ body {
 .arm.left {
   top: 35%;
   left: 5%;
-  transform-origin: top left; 
+  transform-origin: top left;
   transform: rotate(130deg) scaleX(-1);
   animation: 3s linear infinite wave;
 }
@@ -243,7 +237,7 @@ body {
 }
 
 .foot {
-  width:  15%;
+  width: 15%;
   height: 30%;
   background-color: var(--penguin-picorna);
   top: 85%;
