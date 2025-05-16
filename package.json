@@ -1,0 +1,22 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "portfolio of my stuff",
+  "main": "index.js",
+  "scripts": {
+    "test": "pnpm run lint",
+    "lint": "pnpm run lint:css ; pnpm run lint:html ; pnpm run lint:js",
+    "lint:fix": "pnpm run lint:css -w && pnpme run lint:html -w",
+    "lint:css": "prettier --bracket-same-line --parser css --quote-props preserve --no-config -l *.css */*.css",
+    "lint:html": "prettier --bracket-same-line --parser html --quote-props preserve --no-config -l *.html */*.html",
+    "lint:js": "eslint */*.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.8.0",
+  "devDependencies": {
+    "eslint": "^9.27.0",
+    "prettier": "^3.5.3"
+  }
+}
