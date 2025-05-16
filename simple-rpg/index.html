@@ -1,9 +1,14 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="./styles.css">
-    <link rel="font" href="./fonts/JF-Dot-Shinonome-14-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link
+      rel="font"
+      href="./fonts/JF-Dot-Shinonome-14-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin />
     <title>RPG - Dragon Repeller</title>
   </head>
   <body>
@@ -14,19 +19,31 @@
         <button id="button3" tabindex="0" aria-pressed="false"></button>
         <button id="button4" tabindex="0" aria-pressed="false"></button>
       </div>
-        <span id="monsterImage" class="stat">
-          <img src="./monsters/dragon-normal.png" />
-        </span>
+      <div id="animation"></div>
+      <span id="monsterImage" class="stat">
+        <img src="./monsters/dragon-normal.png" />
+      </span>
       <div id="stat-bar">
-      <div id="stats">
-        <span class="stat">LEVEL: <strong><span id="levelText"></span></strong></span>
-        <span class="stat">HEALTH: <strong><span id="healthText"></span></strong></span>
-        <span class="stat">GOLD: <strong><span id="goldText"></span></strong></span>
+        <div id="stats">
+          <span class="stat"
+            >LEVEL: <strong><span id="levelText"></span></strong
+          ></span>
+          <span class="stat"
+            >HEALTH: <strong><span id="healthText"></span></strong
+          ></span>
+          <span class="stat"
+            >GOLD: <strong><span id="goldText"></span></strong
+          ></span>
+        </div>
+        <div id="monsterStats">
+          <span class="stat"
+            ><strong><span id="monsterName">MONSTER</span></strong></span
+          >
+          <span class="stat"
+            >HEALTH: <strong><span id="monsterHealth"></span></strong
+          ></span>
+        </div>
       </div>
-      <div id="monsterStats">
-        <span class="stat"><strong><span id="monsterName">MONSTER</span></strong></span>
-        <span class="stat">HEALTH: <strong><span id="monsterHealth"></span></strong></span>
-      </div></div>
       <div id="text">
         <p class="text"></p>
       </div>
