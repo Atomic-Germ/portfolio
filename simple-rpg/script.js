@@ -5,6 +5,7 @@ let currentWeapon = 0;
 let fighting;
 let monsterHealth;
 let inventory = ["stick"];
+let id = null;
 
 const body = document.querySelector("body");
 const button1 = document.querySelector("#button1");
@@ -20,52 +21,68 @@ const monsterName = document.querySelector("#monsterName");
 const monsterHealthText = document.querySelector("#monsterHealth");
 const monsterImage = document.querySelector("#monsterImage");
 const locationImage = document.querySelector("#location");
+const animationElement = document.querySelector("#animation");
 const audio = new Audio();
 const sfx = new Audio();
 
+audio.loop = true;
+sfx.loop = false;
+
+const monsters = [
+  {
+   "name": "GOATOAD",
+   "level": 2,
+   "health": 20,
+   "images": ["./monsters/goatoad-one.png"],
+   "music": ["./audio/fight_1.mp3"]
+  },
+  {
+   "name": "GOATOADPOLE",
+   "level": 1,
+   "health": 15,
+   "images": ["./monsters/goatoad-two.png"],
+   "music": ["./audio/fight_1.mp3"]
+  },
+  {
+   "name": "AMANITA",
+   "level": 5,
+   "health": 30,
+   "images": ["./monsters/dragon-normal.png"],
+   "music": ["./audio/fight_1.mp3"]
+  },
+  {
+   "name": "PANTHERINA",
+   "level": 15,
+   "health": 100,
+   "images": ["./monsters/dragon-strong.png"],
+   "music": ["./audio/fight_0.mp3"]
+  },
+  {
+   "name": "INVADER",
+   "level": 6,
+   "health": 50,
+   "images": ["./monsters/invader-one.png"],
+   "music": ["./audio/fight_1.mp3"]
+  }
+];
+
+const items = { 
+  health: 3 
+};
 const weapons = [
   { name: 'STICK', power: 5 },
   { name: 'DAGGER', power: 30 },
   { name: 'CLAW HAMMER', power: 50 },
   { name: 'SWORD', power: 100 },
-  { name: 'GREAT SWORD', power: 150 }
+  { name: 'GREAT SWORD', power: 150 },
+  { name: 'SHINING SWORD', power: 200 }
 ];
-const monsters = [
-  {
-    name: "GOATOAD",
-    level: 1,
-    health: 15,
-    images: ["./monsters/goatoad-one.png"],
-    music: ["./audio/fight_1.mp3"]
-  },
-  {
-    name: "GREATOAD",
-    level: 4,
-    health: 60,
-    images: ["./monsters/goatoad-two.png"],
-    music: ["./audio/fight_1.mp3"]
-  },
-  {
-    name: "DRAKE",
-    level: 10,
-    health: 100,
-    images: ["./monsters/dragon-normal.png"],
-    music: ["./audio/fight_1.mp3"]
-  },
-  {
-    name: "DRAGON",
-    level: 15,
-    health: 300,
-    images: ["./monsters/dragon-strong.png"],
-    music: ["./audio/fight_0.mp3"]
-  }
-]
 const locations = [
   {
     name: "town square",
     "button text": ["SHOP", "EXIT TOWN", "GYGA", "RESET"],
     "button functions": [goShop, goFeild, gygaEncounter, restart],
-    text: "You are in the town square. You see a sign that says \"SHOP\".",
+    text: "You are in the town square. You see a sign that says \"SHOP\". You also see a sign pointing toward \"Gyga\"",
     images: ["url(./locations/town-square.png)"],
     music: ["./audio/town_0.mp3"]
   },
@@ -79,8 +96,8 @@ const locations = [
   },
   {
     name: "cave",
-    "button text": ["HUNT MINIMON", "HUNT MONSTERS", "EXIT CAVE", "RESET"],
-    "button functions": [fightGoatoad, fightGreatoad, goFeild, restart],
+    "button text": ["HUNT MINIONS", "HUNT MONSTERS", "EXIT CAVE", "RESET"],
+    "button functions": [fightMinion, fightMonsters, goFeild, restart],
     text: "You enter the cave. You see some monsters.",
     images: ["url(./locations/cave.png)"],
     music: ["./audio/cave_0.mp3","./audio/cave_1.mp3"],
@@ -89,21 +106,21 @@ const locations = [
   {
     name: "fight",
     "button text": ["ATTACK", "DODGE", "RUN", "HEAL"],
-    "button functions": [attack, dodge, goCave, buyHealth],
+    "button functions": [attack, dodge, goCave, itemHealth],
     text: "A monster has appeared.",
     images: ["./"],
   },
   {
     name: "kill monster",
     "button text": ["ENTER TOWN", "EXLORE", "EXIT CAVE", "HEAL"],
-    "button functions": [goTown, goCave, goFeild, buyHealth],
+    "button functions": [goTown, goCave, goFeild, itemHealth],
     text: 'The monster screams "Arg!" as it dies. You gain elevelerience points and find gold.',
     images: ["./"]
   },
   {
     name: "lose",
     "button text": ["REPLAY?", "REPLAY?", "REPLAY?", "REPLAY?"],
-    "button functions": [restart, restart, restart, restart],
+    "button functions": [restart, easterEgg, restart, restart],
     text: "You die. &#x2620;",
     images: ["./"],
     music: ["./audio/lose.mp3"]
@@ -163,14 +180,12 @@ function update(location) {
 function goTown() {
   update(locations[0]); 
   audio.src = locations[0].music[0];
-  audio.loop = true;
   audio.play();
 }
 
 function goShop() {
   update(locations[1]);
   audio.src = locations[1].music[0];
-  audio.loop = true;
   audio.play();
   locationImages = locations[1].images;
   body.style.backgroundImage = locationImages[0];
@@ -181,7 +196,6 @@ function goShop() {
 function goCave() {
   update(locations[2]);
   audio.src = locations[2].music[0];
-  audio.loop = true;
   audio.play();
   locationImages = locations[2].images;
   body.style.backgroundImage = locationImages[0];
@@ -192,7 +206,6 @@ function goCave() {
 function goFeild() {
   update(locations[8]);
   audio.src = locations[8].music[0];
-  audio.loop = true;
   audio.play();
   locationImages = locations[8].images;
   body.style.backgroundImage = locationImages[0];
@@ -211,14 +224,29 @@ function buyHealth() {
   }
 }
 
+function itemHealth() {
+  if (items["health"] != 0) {
+    health += 10;
+    items["health"]--;
+    healthText.innerText = health;
+    text.innerText = `+10 health, ${items["health"] + 1} healing potions left.`;
+  } else {
+    text.innerText = "No healing potions remaining.";
+  }
+  health -= getMonsterAttackValue(monsters[fighting].level);
+}
+
 function buyFullHealth() {
-  if (gold >= 100 - health) {
+  let needsHealth = 100 - health;
+  if (gold >= needsHealth) {
     gold -= 100 - health;
     health += 100 - health;
     goldText.innerText = gold;
     healthText.innerText = health;
-  } else if (health >= 100 ) {
-    text.innerText = "You do not have enough gold to health.";
+  } else if (gold < needsHealth) {
+    text.innerText = `You do not have enough gold for ${needsHealth} health.`;
+  } else if (needsHealth === 0) {
+    text.innerText = `We can't restore ${needsHealth} health!`;
   }
 }
 
@@ -230,24 +258,23 @@ function buyWeapon() {
       goldText.innerText = gold;
       let newWeapon = weapons[currentWeapon].name;
       sfx.src = "./audio/buy_sell.mp3";
-      sfx.loop = false;
       sfx.play();
-      text.innerText = "You now have a " + newWeapon + ".";
+      text.innerText = `Bought a ${newWeapon}!`;
       inventory.push(newWeapon);
-      text.innerText += " In your inventory you have: " + inventory;
+      text.innerText += ` In your inventory you have: ${inventory}`;
     } else {
       text.innerText = "You can't afford it!";
     }
   } else {
     text.innerText = "You already have the most powerful weapon!";
-    button2.innerText = "Sell weapon for 15 gold";
+    button2.innerText = "Sell Weapon";
     button2.onclick = sellWeapon;
   }
 }
 
 function sellWeapon() {
   if (inventory.length > 1) {
-    gold += 15;
+    gold += Math.floor(currentWeapon * 1.2);
     goldText.innerText = gold;
     let currentWeapon = inventory.shift();
     text.innerText = "You sold a " + currentWeapon + ".";
@@ -257,30 +284,22 @@ function sellWeapon() {
   }
 }
 
-function fightGoatoad () {
-  fighting = 0;
-  goFight();
+function fightMinion() {
+  goFight(Math.floor(Math.random() * 3));
 }
 
-function fightGreatoad() {
-  fighting = 1;
-  goFight();
-}
-
-function fightDrake() {
-  fighting = 2;
-  goFight();
+function fightMonsters() {
+  goFight(4);
 }
 
 function gygaEncounter() {
-  fighting = 3;
-  goFight();
+  goFight(3);
 }
 
-function goFight() {
+function goFight(monster) {
+  fighting = monster;
   update(locations[3]);
   audio.src = monsters[fighting].music[0];
-  audio.loop = true;
   audio.play();
   monsterHealth = monsters[fighting].health;
   monsterImages = monsters[fighting].images;
@@ -288,27 +307,58 @@ function goFight() {
   monsterImage.style.display = "block";
   monsterName.innerText = monsters[fighting].name;
   monsterHealthText.innerText = monsterHealth;
-  monsterImage.innerHTML = '<img src="' + monsterImages[0] + '" />';
-  text.innerText = "A " + monsters[fighting].name + " appears!" ;
+  monsterImage.innerHTML = `<img src="${monsterImages[0]}" />`;
+  text.innerText = `${monsters[fighting].name} appears!`;
+}
+
+function animateHit (hit) {
+  const initialTop = animationElement.style.top;
+  const initialRight = animationElement.style.right;
+  const movingBottom = 50;
+  let hitLanded = hit ? true : false;
+  let movingSize = 30;
+  let movingTop = initialTop;
+  let movingRight = initialRight;
+  clearInterval(id);
+  id = setInterval(frame, 5);
+  animationElement.style.display = "block";
+  animationElement.style.backgroundColor = "orange";
+  animationElement.style.width = `${movingSize}vh`;
+  animationElement.style.height = `${movingSize}vh`;
+  function frame() {
+    if (movingSize <= 0) {
+      animationElement.style.top = initialTop;
+      animationElement.style.right = initialRight;
+      clearInterval(id);
+      animationElement.style.display = "none";
+    } else {
+      movingTop++;
+      movingRight++;
+      movingSize -= 0.5;
+      animationElement.style.width = `${movingSize}px`;
+      animationElement.style.height = `${movingSize}vh`;
+      animationElement.style.top = `${movingTop}vh`;
+      animationElement.style.right = `${movingRight}vw`;
+      animationElement.style.backgroundColor = hitLanded ? "orangered" : "transparent";
+    };
+  }
 }
 
 function attack() {
-  text.innerText = "The " + monsters[fighting].name + " attacks.";
-  text.innerText += " You attack it with your " + weapons[currentWeapon].name + ".";
+  text.innerText = `${monsters[fighting].name} attacks.`;
+  text.innerText += ` You attack ${monsters[fighting].name} with your ${weapons[currentWeapon].name}.`;
   health -= getMonsterAttackValue(monsters[fighting].level);
   if (isMonsterHit()) {
+    animateHit(true);
     sfx.src = "./audio/impact.mp3";
-    sfx.loop = false;
     sfx.play();
-    monsterHealth -= weapons[currentWeapon].power + Math.floor(Math.random() * level) + 1;    
+    monsterHealth -= weapons[currentWeapon].power + Math.floor(Math.random() * level) + 2;    
   } else {
+    animateHit();
     text.innerText += " You miss.";
     sfx.src = "./audio/miss.mp3";
-    sfx.loop = false;
     sfx.play();
   }
-  healthText.innerText = health;
-  monsterHealthText.innerText = monsterHealth;
   if (health <= 0) {
     lose();
   } else if (monsterHealth <= 0) {
@@ -318,6 +368,8 @@ function attack() {
       defeatMonster();
     }
   }
+  healthText.innerText = health;
+  monsterHealthText.innerText = monsterHealth;
   if (Math.random() <= .1 && inventory.length !== 1) {
     text.innerText += " Your " + inventory.pop() + " breaks.";
     currentWeapon--;
@@ -333,20 +385,24 @@ function getMonsterAttackValue(level) {
 const isMonsterHit = _ => Math.random() > .2 || health < 20;
 
 function dodge() {
-  text.innerText = "You dodge the attack from the " + monsters[fighting].name;
+  text.innerText = `You dodge the attack from the ${monsters[fighting].name}.`;
 }
 
 function defeatMonster() {
-  gold += Math.floor(monsters[fighting].level * 6.7);
   level += monsters[fighting].level;
   goldText.innerText = gold;
   levelText.innerText = level;
   update(locations[4]);
+  gold += Math.floor(monsters[fighting].level * 6.7);
+  audio.src = "./audio/win_1.mp3";
+  audio.play();
 }
 
 function lose() {
+  health = 0;
+  items["health"] = 3;
+  healthText.innerText = health;
   audio.src = locations[5].music[0];
-  audio.loop = true;
   update(locations[5]);
   audio.play();
 }
@@ -361,6 +417,7 @@ function restart() {
   gold = 50;
   currentWeapon = 0;
   inventory = ["stick"];
+  items["health"] = 3;
   goldText.innerText = gold;
   healthText.innerText = health;
   levelText.innerText = level;
