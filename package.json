@@ -11,8 +11,8 @@
     "lint:html": "prettier --bracket-same-line --parser html --quote-props preserve --no-config -l *.html */*.html",
     "lint:js": "eslint */*.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["resume","portfolio","sample"],
+  "author": "Casey Parker",
   "license": "ISC",
   "packageManager": "pnpm@10.8.0",
   "devDependencies": {
