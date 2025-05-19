@@ -1,12 +1,21 @@
-let level = 0;
-let health = 100;
-let gold = 50;
-let currentWeapon = 0;
+// Initialize Player Data
+let userData = {
+  level: 0,
+  health: 100,
+  gold: 50,
+  currentWeapon: 0,
+  inventory: ["stick"],
+  items: {
+    health: 3
+  }
+}
+
+// Set a couple variables
 let fighting;
 let monsterHealth;
-let inventory = ["stick"];
 let id = null;
 
+// Grab a bunch of DOM
 const body = document.querySelector("body");
 const button1 = document.querySelector("#button1");
 const button2 = document.querySelector("#button2");
@@ -51,24 +60,21 @@ const monsters = [
    "music": ["./audio/fight_1.mp3"]
   },
   {
-   "name": "PANTHERINA",
-   "level": 15,
-   "health": 100,
-   "images": ["./monsters/dragon-strong.png"],
-   "music": ["./audio/fight_0.mp3"]
-  },
-  {
    "name": "INVADER",
    "level": 6,
    "health": 50,
    "images": ["./monsters/invader-one.png"],
    "music": ["./audio/fight_1.mp3"]
+  },
+  {
+   "name": "PANTHERINA",
+   "level": 15,
+   "health": 100,
+   "images": ["./monsters/dragon-strong.png"],
+   "music": ["./audio/fight_0.mp3"]
   }
 ];
 
-const items = { 
-  health: 3 
-};
 const weapons = [
   { name: 'STICK', power: 5 },
   { name: 'DAGGER', power: 30 },
@@ -91,7 +97,7 @@ const locations = [
     "button text": ["10 HEALTH", "FULL HEALTH", "UPGRADE WEAPON", "EXIT"],
     "button functions": [buyHealth, buyFullHealth, buyWeapon, goTown],
     text: "\'Hi! What can I do ya for?\'",
-    images: ["url(./locations/item-shop.png)","./people/shopkeepers/items-male.png"],
+    images: ["url(./locations/item-shop.png)","./people/shopkeepers/-male.png"],
     music: ["./audio/shop_0.mp3"]
   },
   {
@@ -178,9 +184,9 @@ function update(location) {
   button3.style.backgroundColor = "var(--button-color)";
   button4.style.backgroundColor = "var(--button-color)";
   text.innerHTML = location.text;
-  goldText.innerText = gold;
-  levelText.innerText = level;
-  healthText.innerText = health;
+  goldText.innerText = userData.gold;
+  levelText.innerText = userData.level;
+  healthText.innerText = userData.health;
   text.style.height = "auto";
   audio.pause();
 }
@@ -220,27 +226,27 @@ function goFeild() {
 }
 
 function buyHealth() {
-  if (gold >= 10 && health < 100) {
-    gold -= 10;
-    health += 10;
-    goldText.innerText = gold;
-    healthText.innerText = health;
-  } else if (gold < 10 ) {
+  if (userData.gold >= 10 && userData.health < 100) {
+    userData.gold -= 10;
+    userData.health += 10;
+    goldText.innerText = userData.gold;
+    healthText.innerText = userData.health;
+  } else if (userData.gold < 10 ) {
     text.innerText = "You don't have enough to cover the bill!";
-  } else if (health >= 100 ) {
+  } else if (userData.health >= 100 ) {
     text.innerText = "You do not need to heal.";
   }
 }
 
 function itemHealth() {
-  if (items["health"] > 0 && health < 100) {
-    items["health"]--;
+  if (userData.items.health > -1 && userData.health < 100) {
+    userData.items.health--;
     button4.disabled = true;
     button4.style.backgroundColor = "var(--button-color-active)";
-    text.innerText = `+${100 - health} health, ${items["health"] + 1} healing potions left.`;
-    health += 100 - health;
-    healthText.innerText = health;
-  } else if (health >= 100) {
+    text.innerText = `+${100 - userData.health} health, ${userData.items.health} healing potions left.`;
+    userData.health = 100;
+    healthText.innerText = userData.health;
+  } else if (userData.health >= 100) {
     text.innerText = "Can't restore above 100 health with this item.";
   } else {
     text.innerText = "No healing potions remaining.";
@@ -248,31 +254,30 @@ function itemHealth() {
 }
 
 function buyFullHealth() {
-  let needsHealth = 100 - health;
-  if (gold >= needsHealth) {
-    gold -= 100 - health;
-    health += 100 - health;
-    goldText.innerText = gold;
-    healthText.innerText = health;
-  } else if (gold < needsHealth) {
-    text.innerText = `You do not have enough gold for ${needsHealth} health.`;
-  } else if (needsHealth === 0) {
-    text.innerText = `We can't restore ${needsHealth} health!`;
+  if (userData.gold >= 100) {
+    userData.gold -= 100 - userData.health;
+    userData.health = 100;
+    goldText.innerText = userData.gold;
+    healthText.innerText = userData.health;
+  } else if (userData.health >= 100) {
+    text.innerText = `You can't restore over 100 health!`;
+  } else {
+    text.innerText = `You do not have enough gold for ${100 - userData.health} health.`;
   }
 }
 
 function buyWeapon() {
-  if (currentWeapon < weapons.length - 1) {
-    if (gold >= 30) {
-      gold -= 30;
-      currentWeapon++;
-      goldText.innerText = gold;
-      let newWeapon = weapons[currentWeapon].name;
+  if (userData.currentWeapon < weapons.length - 1) {
+    if (userData.gold >= 30) {
+     userData.gold -= 30;
+      userData.currentWeapon++;
+      goldText.innerText = userData.gold;
+      let newWeapon = weapons[userData.currentWeapon].name;
       sfx.src = "./audio/buy_sell.mp3";
       sfx.play();
       text.innerText = `Bought a ${newWeapon}!`;
-      inventory.push(newWeapon);
-      text.innerText += ` In your inventory you have: ${inventory}`;
+      userData.inventory.push(newWeapon);
+      text.innerText += ` In your userData.inventory you have: ${userData.inventory}`;
     } else {
       text.innerText = "You can't afford it!";
     }
@@ -284,12 +289,12 @@ function buyWeapon() {
 }
 
 function sellWeapon() {
-  if (inventory.length > 1) {
-    gold += Math.floor(currentWeapon * 1.2);
-    goldText.innerText = gold;
-    let currentWeapon = inventory.shift();
-    text.innerText = "You sold a " + currentWeapon + ".";
-    text.innerText += " In your inventory you have: " + inventory;
+  if (userData.inventory.length > 1) {
+   userData.gold += Math.floor(userData.currentWeapon * 1.2);
+    goldText.innerText = userData.gold;
+    userData.currentWeapon = userData.inventory.shift();
+    text.innerText = "You sold a " + userData.currentWeapon + ".";
+    text.innerText += " In your userData.inventory you have: " + userData.inventory;
   } else {
     text.innerText = "Don't sell your only weapon!";
   }
@@ -320,6 +325,10 @@ function goFight(monster) {
   monsterHealthText.innerText = monsterHealth;
   monsterImage.innerHTML = `<img src="${monsterImages[0]}" />`;
   text.innerText = `${monsters[fighting].name} appears!`;
+  if (userData.items.health < 0) {
+    button4.disabled = true;
+    button4.style.backgroundColor = "var(--button-color-active)";
+  }
 }
 
 function animateHit (hit) {
@@ -356,21 +365,25 @@ function animateHit (hit) {
 }
 
 function attack() {
+  if (userData.items.health > 0) {
+    button4.disabled = false;
+    button4.style.backgroundColor = "var(--button-color)";
+  }
   text.innerText = `${monsters[fighting].name} attacks.`;
-  text.innerText += ` You attack ${monsters[fighting].name} with your ${weapons[currentWeapon].name}.`;
-  health -= getMonsterAttackValue(monsters[fighting].level);
+  text.innerText += ` You attack ${monsters[fighting].name} with your ${weapons[userData.currentWeapon].name}.`;
+  userData.health -= getMonsterAttackValue(monsters[fighting].level);
   if (isMonsterHit()) {
     animateHit(true);
     sfx.src = "./audio/impact.mp3";
     sfx.play();
-    monsterHealth -= weapons[currentWeapon].power + Math.floor(Math.random() * level) + 2;    
+    monsterHealth -= weapons[userData.currentWeapon].power + Math.floor(Math.random() * userData.level) + 2;    
   } else {
     animateHit();
     text.innerText += " You miss.";
     sfx.src = "./audio/miss.mp3";
     sfx.play();
   }
-  if (health <= 0) {
+  if (userData.health <= 0) {
     lose();
   } else if (monsterHealth <= 0) {
     if (fighting === 2) {
@@ -379,44 +392,44 @@ function attack() {
       defeatMonster();
     }
   }
-  if (items["health"] > 1) {
-    button4.disabled = false;
-    button4.style.backgroundColor = "var(--button-color)";
-  }
-  healthText.innerText = health;
+  healthText.innerText = userData.health;
   monsterHealthText.innerText = monsterHealth;
-  if (Math.random() <= .1 && inventory.length !== 1) {
-    text.innerText += " Your " + inventory.pop() + " breaks.";
-    currentWeapon--;
+  if (Math.random() <= .1 && userData.inventory.length !== 1) {
+    text.innerText += " Your " + userData.inventory.pop() + " breaks.";
+    userData.currentWeapon--;
   }
 }
 
 function getMonsterAttackValue(level) {
-  const hit = (level * 5) - (Math.floor(Math.random() * level));
+  const hit = (level * 5) - (Math.floor(Math.random() * userData.level));
   console.log(hit);
   return hit > 0 ? hit : 0;
 }
 
-const isMonsterHit = _ => Math.random() > .2 || health < 20;
+const isMonsterHit = _ => Math.random() > .2 || userData.health < 20;
 
 function dodge() {
+  if (userData.items.health < 0) {
+    button4.disabled = true;
+    button4.style.backgroundColor = "var(--button-active-color)";
+  }
   text.innerText = `You dodge the attack from the ${monsters[fighting].name}.`;
 }
 
 function defeatMonster() {
-  level += monsters[fighting].level;
-  goldText.innerText = gold;
-  levelText.innerText = level;
+  userData.level += monsters[fighting].level;
+  goldText.innerText = userData.gold;
+  levelText.innerText = userData.level;
   update(locations[4]);
-  gold += Math.floor(monsters[fighting].level * 6.7);
+  userData.gold += Math.floor(monsters[fighting].level * 6.7);
   audio.src = "./audio/win_1.mp3";
   audio.play();
 }
 
 function lose() {
-  health = 0;
-  items["health"] = 3;
-  healthText.innerText = health;
+  userData.health = 0;
+  userData.items.health = 3;
+  healthText.innerText = userData.health;
   audio.src = locations[5].music[0];
   update(locations[5]);
   audio.play();
@@ -427,15 +440,15 @@ function winGame() {
 }
 
 function restart() {
-  level = 0;
-  health = 100;
-  gold = 50;
-  currentWeapon = 0;
-  inventory = ["stick"];
-  items["health"] = 3;
-  goldText.innerText = gold;
-  healthText.innerText = health;
-  levelText.innerText = level;
+  userData.level = 0;
+  userData.health = 100;
+  userData.gold = 50;
+  userData.currentWeapon = 0;
+  userData.inventory = ["stick"];
+  userData.items.health = 3;
+  goldText.innerText = userData.gold;
+  healthText.innerText = userData.health;
+  levelText.innerText = userData.level;
   goFeild();
 }
 
@@ -462,12 +475,12 @@ function pick(guess) {
   }
   if (numbers.includes(guess)) {
     text.innerText += "Right! You win 20 gold!";
-    gold += 20;
-    goldText.innerText = gold;
+   userData.gold += 20;
+    goldText.innerText = userData.gold;
   } else {
     text.innerText += "Wrong! You lose 10 health!";
-    health -= 10;
-    healthText.innerText = health;
+    userData.health -= 10;
+    healthText.innerText = userData.health;
     if (health <= 0) {
       lose();
     }
