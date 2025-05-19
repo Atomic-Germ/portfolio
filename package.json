@@ -9,14 +9,20 @@
     "lint:fix": "pnpm run lint:css -w && pnpme run lint:html -w",
     "lint:css": "prettier --bracket-same-line --parser css --quote-props preserve --no-config -l *.css */*.css",
     "lint:html": "prettier --bracket-same-line --parser html --quote-props preserve --no-config -l *.html */*.html",
-    "lint:js": "eslint */*.js"
+    "lint:js": "eslint */*.js",
+    "dev": "live-server"
   },
-  "keywords": ["resume","portfolio","sample"],
+  "keywords": [
+    "resume",
+    "portfolio",
+    "sample"
+  ],
   "author": "Casey Parker",
   "license": "ISC",
   "packageManager": "pnpm@10.8.0",
   "devDependencies": {
     "eslint": "^9.27.0",
+    "live-server": "^1.2.2",
     "prettier": "^3.5.3"
   }
 }
