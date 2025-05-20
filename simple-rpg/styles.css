@@ -35,147 +35,185 @@ a {
   color: var(--text-color);
 }
 
-button {
-  background-color: var(--button-color);
-  border: var(--border-main);
-  text-align: center;
-  cursor: initial;
-  height: 6vh;
-  width: 30vw;
-  margin: 1vh;
-}
-
-button:active {
-  background-color: var(--button-color-active);
-}
-
-.stat {
-  display: table;
-  height: 2ch;
-  width: auto;
-}
-
-#game {
-  background-color: var(--window-background);
-  margin: auto;
-  margin-top: 1ch;
-  padding: 2ch;
-  height: 640px;
-  box-shadow: 0 8px 16px 0 var(--shadow-color);
-  border-radius: 1%;
-}
-
-#location {
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-}
-
-#location > img {
-  min-width: 100vw;
-  min-height: 100vh;
-  transition: none;
-}
-
-#stat-bar {
-  background-color: var(--shadow-color);
-  display: grid;
-  grid-gap: 1ch;
-  margin-left: 0.5ch;
-  margin-top: 0.5ch;
-  margin-bottom: 0ch;
-  border-radius: 3px;
-  padding: 10px;
-}
-
-#text {
-  background-color: var(--shadow-color);
-  position: relative;
-  border-image: url("") 100 stretch;
-  overflow-y: scroll;
-  border: 1px solid transparent;
-  word-wrap: break-word;
-  overflow-x: hidden;
-  border-radius: 3px;
-  box-shadow: 0 0 1em var(--shadow-color);
-  z-index: 0;
-}
-
-#monsterStats,
-#stats {
-  display: inline-grid;
-  min-width: 30vw;
-  height: 6ch;
-}
-
-#stats {
-  grid-column: 1;
-}
-
-#monsterStats {
-  grid-column: 2;
-  display: none;
-}
-
-#monsterImage {
-  float: right;
-  margin-top: -2ch;
-  display: none;
-  z-index: 1;
-}
-
-#monsterImage > img {
-  filter: drop-shadow(0vh 0vw 1px white);
-}
-
-/* Screens, screens, screens */
-/* ----------- iPhones ----------- */
-
-/* 16 Pro */
-/* Portrait and Landscape */
-@media only screen and (min-width: 402px) {
-  #text {
-    top: 30vh;
-    height: 30vh;
+  button {
+    background-color: var(--button-color);
+    border: var(--border-main);
+    text-align: center;
+    cursor: initial;
+    height: 6vh;
+    width: 30vw;
+    margin: 1ch;
   }
-  .text {
-    padding: 0 5vw;
-    font-size: 2em;
+  button:active {
+    background-color: var(--button-color-active);
   }
+
+  #location {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+
+  #location > img {
+    min-width: 100vw;
+    min-height: 100vh;
+    transition: none;
+  }
+
   #game {
-    width: 80vw;
-    height: 90vh;
+    background-color: var(--window-background);
+    margin: auto;
+    margin-top: 1ch;
+    padding: 2ch;
+    box-shadow: 0 8px 16px 0 var(--shadow-color);
+    border-radius: 1%;
+    width: auto;
+    height: 80vh;
   }
-  #controls {
-    max-width: 80vw;
-    position: fixed;
+  
+  @media screen and (min-device-width: 1080px){
+    #game {
+      width: 83vw;
+      float: right;
+    }
+  }
+
+  @media screen and (max-device-height: 667px){
+    #game {
+    margin: -12px;
+  }
+}
+  
+  #stat-bar {
+    position: relative;
+    background-color: var(--shadow-color);
+    display: grid;
+    grid-gap: 1ch;
+    margin-top: 0.5ch;
+    margin-bottom: 0ch;
+    border-radius: 3%;
+    padding: 0.5em;
+    padding-top: 0.3em;
+    height: 4.5rem;
+  }
+
+  @media screen and (min-device-width: 1080px){
+    #stat-bar {
+    }
+  }
+  
+  .stat {
     display: table;
-    bottom: 8vh;
-    right: 3vw;
+    height: 2ch;
+    width: auto;
+    font-size: 1.5em;
   }
-  #controls button {
-    color: var(--text-color);
-    border: 0;
-    font-size: 1em;
-    border-radius: 3px;
-    white-space: nowrap;
+
+  #monsterStats,
+  #stats {
+    min-width: 30vw;
+    height: 4.5rem;
   }
+
+  #stats {
+    grid-column: 1;
+    display: inline-grid;
+  }
+
+  #monsterStats {
+    grid-column: 2;
+    display: none;
+  }
+
   #monsterImage {
-    position: fixed;
-    top: 38vh;
-    right: 10vw;
+    float: right;
+    display: none;
+    z-index: 1;
     padding: 0px;
     margin: 0px;
     width: content;
     height: content;
+    position: absolute;
+    right: 50vw;
+    top: 48vh;
   }
+
   #monsterImage > img {
-    transform: translate(0%, -100%);
-    max-height: 40vh;
+    max-height: 43vh;
     filter: drop-shadow(0vh 0vw 5px var(--button-color));
+    transform: translate(50%, -100%);
   }
+
+  @media screen and (max-device-height: 667px){
+  #monsterImage > img {
+    max-height: 32vh;
+  }
+}
+
+  #text {
+    position: relative;
+    background-color: var(--shadow-color);
+    border-radius: 3%;
+    border: 1ch solid white;
+    border-image: url("") 100 stretch;
+    margin: 0ch;
+    padding: 0ch 1ch;
+    box-shadow: 0 0 1ch var(--shadow-color);
+    word-wrap: break-word;
+    width: auto;
+    overflow-x: hidden;
+    height: 18vh;
+    overflow-y: scroll;
+    font-size: 2em;
+    top: 31vh;
+    z-index: 0;
+  }
+
+  #text > p {
+    margin: 0px;
+    padding: 0px;
+  }
+
+  #controls {
+    position: fixed;
+    display: table;
+    bottom: 2em;
+    width: 100%;
+    left: 0px;
+    bottom: 6vh;
+  }
+  
+  @media screen and (min-device-width: 1080px){
+    #controls {
+      display: block;
+      width: auto;
+      bottom: 50vh;
+      float: left;
+    }
+    #controls > button {
+      box-shadow: 0 0 1ch var(--shadow-color);
+    }
+  }
+
+  @media screen and (max-device-height: 667px){
+    #controls {
+      bottom: 1vh;
+    }
+  }
+
+  #controls button {
+    color: var(--text-color);
+    border: 0;
+    font-size: 1.2em;
+    border-radius: 0.1em;
+    white-space: nowrap;
+    margin: 1%;
+    padding: 1%;
+    width: 48%;
+  }
+
   #animation {
     background-color: orangered;
     border-radius: 50%;
@@ -185,32 +223,13 @@ button:active {
     border-end-end-radius: 50%;
     z-index: 2;
   }
-}
 
-@media only screen and (min-height: 733px) {
-  #controls {
-    bottom: 4vh;
+  /* Animations */
+  @keyframes rolldown {
+    from {
+      height: 0%;
+    }
+    to {
+      height: 100%;
+    }
   }
-  #text {
-    top: 35vh;
-    margin: 0 4vh;
-  }
-  #monsterImage {
-    position: absolute;
-    right: 50vw;
-    top: 49vh;
-  }
-  #monsterImage > img {
-    transform: translate(50%, -100%);
-  }
-}
-
-/* Animations */
-@keyframes rolldown {
-  from {
-    height: 0%;
-  }
-  to {
-    height: 100%;
-  }
-}

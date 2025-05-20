@@ -97,7 +97,7 @@ const locations = [
     "button text": ["10 HEALTH", "FULL HEALTH", "UPGRADE WEAPON", "EXIT"],
     "button functions": [buyHealth, buyFullHealth, buyWeapon, goTown],
     text: "\'Hi! What can I do ya for?\'",
-    images: ["url(./locations/item-shop.png)","./people/shopkeepers/-male.png"],
+    images: ["url(./locations/item-shop.png)","./people/shopkeepers/items-male.png"],
     music: ["./audio/shop_0.mp3"]
   },
   {
@@ -277,7 +277,7 @@ function buyWeapon() {
       sfx.play();
       text.innerText = `Bought a ${newWeapon}!`;
       userData.inventory.push(newWeapon);
-      text.innerText += ` In your userData.inventory you have: ${userData.inventory}`;
+      text.innerText += ` In your inventory you have: ${userData.inventory}`;
     } else {
       text.innerText = "You can't afford it!";
     }
@@ -294,7 +294,7 @@ function sellWeapon() {
     goldText.innerText = userData.gold;
     userData.currentWeapon = userData.inventory.shift();
     text.innerText = "You sold a " + userData.currentWeapon + ".";
-    text.innerText += " In your userData.inventory you have: " + userData.inventory;
+    text.innerText += " In your inventory you have: " + userData.inventory;
   } else {
     text.innerText = "Don't sell your only weapon!";
   }
