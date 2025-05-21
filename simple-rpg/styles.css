@@ -29,207 +29,179 @@ body {
   background-size: cover;
   background-color: var(--shadow-color);
   padding: 1ch 2ch;
+  min-width: 310px;
 }
 
 a {
   color: var(--text-color);
 }
 
-  button {
-    background-color: var(--button-color);
-    border: var(--border-main);
-    text-align: center;
-    cursor: initial;
-    height: 6vh;
-    width: 30vw;
-    margin: 1ch;
-  }
-  button:active {
-    background-color: var(--button-color-active);
-  }
+button {
+  background-color: var(--button-color);
+  border: var(--border-main);
+  text-align: center;
+  cursor: initial;
+  height: 6vh;
+  width: 30vw;
+  margin: 1ch;
+}
+button:active {
+  background-color: var(--button-color-active);
+}
 
-  #location {
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-  }
+#location {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
 
-  #location > img {
-    min-width: 100vw;
-    min-height: 100vh;
-    transition: none;
-  }
+#location > img {
+  min-width: 100vw;
+  min-height: 100vh;
+  transition: none;
+}
 
-  #game {
-    background-color: var(--window-background);
-    margin: auto;
-    margin-top: 1ch;
-    padding: 2ch;
-    box-shadow: 0 8px 16px 0 var(--shadow-color);
-    border-radius: 1%;
-    width: auto;
-    height: 80vh;
-  }
-  
-  @media screen and (min-device-width: 1080px){
-    #game {
-      width: 83vw;
-      float: right;
-    }
-  }
+#game {
+  background-color: var(--window-background);
+  margin: auto;
+  margin-top: 1ch;
+  padding: 2ch;
+  box-shadow: 0 8px 16px 0 var(--shadow-color);
+  border-radius: 1%;
+  width: auto;
+  height: 80vh;
+}
 
-  @media screen and (max-device-height: 667px){
-    #game {
-    margin: -12px;
+#stat-bar {
+  position: relative;
+  background-color: var(--shadow-color);
+  display: grid;
+  grid-gap: 1ch;
+  margin-top: 0.5ch;
+  margin-bottom: 0ch;
+  border-radius: 3%;
+  padding: 0.5em;
+  padding-top: 0.3em;
+  height: 4.5rem;
+}
+
+.stat {
+  display: table;
+  height: 2ch;
+  width: auto;
+  font-size: 1.5em;
+}
+
+#monsterStats,
+#stats {
+  min-width: 30vw;
+  height: 4.5rem;
+}
+
+#stats {
+  grid-column: 1;
+  display: inline-grid;
+}
+
+#monsterStats {
+  grid-column: 2;
+  display: none;
+}
+
+#monsterImage {
+  float: right;
+  display: none;
+  z-index: 1;
+  padding: 0px;
+  margin: 0px;
+  width: content;
+  height: content;
+  position: absolute;
+  right: 50vw;
+  top: 48vh;
+}
+
+#monsterImage > img {
+  max-height: 43vh;
+  filter: drop-shadow(0vh 0vw 5px var(--button-color));
+  transform: translate(50%, -100%);
+}
+
+#text {
+  position: relative;
+  background-color: var(--shadow-color);
+  border-radius: 3%;
+  border: 1ch solid white;
+  border-image: url("") 100 stretch;
+  margin: 0ch;
+  padding: 0ch 1ch;
+  box-shadow: 0 0 1ch var(--shadow-color);
+  word-wrap: break-word;
+  width: auto;
+  overflow-x: hidden;
+  height: 18vh;
+  overflow-y: scroll;
+  font-size: 2em;
+  top: 31vh;
+  z-index: 0;
+}
+
+#text > p {
+  margin: 0px;
+  padding: 0px;
+}
+
+#controls {
+  position: fixed;
+  display: table;
+  bottom: 2em;
+  width: 100%;
+  left: 0px;
+  bottom: 6vh;
+}
+
+#controls button {
+  color: var(--text-color);
+  border: 0;
+  font-size: 1.2em;
+  border-radius: 0.1em;
+  white-space: nowrap;
+  margin: 1%;
+  padding: 1%;
+  width: 48%;
+}
+
+#animation {
+  background-color: orangered;
+  border-radius: 50%;
+  position: fixed;
+  top: 45vh;
+  right: 50vw;
+  border-end-end-radius: 50%;
+  z-index: 2;
+}
+
+/* Animations */
+@keyframes rolldown {
+  from {
+    height: 0%;
+  }
+  to {
+    height: 100%;
   }
 }
-  
-  #stat-bar {
-    position: relative;
-    background-color: var(--shadow-color);
-    display: grid;
-    grid-gap: 1ch;
-    margin-top: 0.5ch;
-    margin-bottom: 0ch;
-    border-radius: 3%;
-    padding: 0.5em;
-    padding-top: 0.3em;
-    height: 4.5rem;
-  }
 
-  @media screen and (min-device-width: 1080px){
-    #stat-bar {
-    }
+@media screen and (max-device-height: 667px) {
+  #game {
+    margin: -12px;
   }
-  
-  .stat {
-    display: table;
-    height: 2ch;
-    width: auto;
-    font-size: 1.5em;
-  }
-
-  #monsterStats,
-  #stats {
-    min-width: 30vw;
-    height: 4.5rem;
-  }
-
-  #stats {
-    grid-column: 1;
-    display: inline-grid;
-  }
-
-  #monsterStats {
-    grid-column: 2;
-    display: none;
-  }
-
-  #monsterImage {
-    float: right;
-    display: none;
-    z-index: 1;
-    padding: 0px;
-    margin: 0px;
-    width: content;
-    height: content;
-    position: absolute;
-    right: 50vw;
-    top: 48vh;
-  }
-
-  #monsterImage > img {
-    max-height: 43vh;
-    filter: drop-shadow(0vh 0vw 5px var(--button-color));
-    transform: translate(50%, -100%);
-  }
-
-  @media screen and (max-device-height: 667px){
   #monsterImage > img {
     max-height: 32vh;
   }
+  #controls {
+    bottom: 1vh;
+  }
 }
 
-  #text {
-    position: relative;
-    background-color: var(--shadow-color);
-    border-radius: 3%;
-    border: 1ch solid white;
-    border-image: url("") 100 stretch;
-    margin: 0ch;
-    padding: 0ch 1ch;
-    box-shadow: 0 0 1ch var(--shadow-color);
-    word-wrap: break-word;
-    width: auto;
-    overflow-x: hidden;
-    height: 18vh;
-    overflow-y: scroll;
-    font-size: 2em;
-    top: 31vh;
-    z-index: 0;
-  }
-
-  #text > p {
-    margin: 0px;
-    padding: 0px;
-  }
-
-  #controls {
-    position: fixed;
-    display: table;
-    bottom: 2em;
-    width: 100%;
-    left: 0px;
-    bottom: 6vh;
-  }
-  
-  @media screen and (min-device-width: 1080px){
-    #controls {
-      display: block;
-      width: auto;
-      bottom: 50vh;
-      float: left;
-    }
-    #controls > button {
-      box-shadow: 0 0 1ch var(--shadow-color);
-    }
-  }
-
-  @media screen and (max-device-height: 667px){
-    #controls {
-      bottom: 1vh;
-    }
-  }
-
-  #controls button {
-    color: var(--text-color);
-    border: 0;
-    font-size: 1.2em;
-    border-radius: 0.1em;
-    white-space: nowrap;
-    margin: 1%;
-    padding: 1%;
-    width: 48%;
-  }
-
-  #animation {
-    background-color: orangered;
-    border-radius: 50%;
-    position: fixed;
-    top: 45vh;
-    right: 50vw;
-    border-end-end-radius: 50%;
-    z-index: 2;
-  }
-
-  /* Animations */
-  @keyframes rolldown {
-    from {
-      height: 0%;
-    }
-    to {
-      height: 100%;
-    }
-  }
