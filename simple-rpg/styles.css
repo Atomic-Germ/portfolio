@@ -193,7 +193,12 @@ button:active {
   }
 }
 
-@media screen and (max-device-height: 667px) {
+/* ============================= */
+/*        MEDIA QUERIES          */
+/* ============================= */
+
+/* iPhone SE (375x667) Portrait */
+@media screen and (max-width: 375px) and (max-height: 667px) {
   #game {
     margin: -12px;
   }
@@ -203,5 +208,37 @@ button:active {
   #controls {
     bottom: 1vh;
   }
+}
+
+/* iPhone 12/13/14 (390x844) Portrait */
+@media screen and (max-width: 390px) and (max-height: 844px) {
+}
+
+/* Pixel 7 Pro (412x892) Portrait */
+@media screen and (max-width: 412px) and (max-height: 892px) {
+}
+
+/* Samsung Galaxy S20 (360x800) Portrait */
+@media screen and (max-width: 360px) and (max-height: 800px) {
+}
+
+/* iPad Mini/Air/Pro 11" (768x1024) Portrait */
+@media screen and (max-width: 768px) and (max-height: 1024px) {
+}
+
+/* iPad Pro 12.9" (1024x1366) Portrait */
+@media screen and (max-width: 1024px) and (max-height: 1366px) {
+}
+
+/* Surface Pro 7 (912x1368) */
+@media screen and (max-width: 912px) and (max-height: 1368px) {
+}
+
+/* Desktop Full HD (1920x1080) */
+@media screen and (min-width: 1200px) and (max-width: 1920px) {
+}
+
+/* Ultra-wide Desktop (2560x1080 and up) */
+@media screen and (min-width: 1921px) {
 }
 
