@@ -111,7 +111,6 @@ section:last-child {
 }
 
 #welcome-section {
-  height: calc(100vh - 30vh);
   padding-top: calc(30vh - 4rem);
   text-align: center;
   vertical-align: middle;
@@ -134,7 +133,7 @@ section:last-child {
 
 #welcome-section i,
 .project-section i {
-  padding-top: 20vh;
+  padding-top: 18vh;
   font-size: 3rem;
   color: var(--bar-bground);
   cursor: pointer;
@@ -204,6 +203,12 @@ section:last-child {
 .navlink:last-child {
   width: 8rem;
   float: left;
+}
+
+.navlink img {
+  padding-top: 1px;
+  height: 1em;
+  width: 1em;
 }
 
 .dropdown-content a {
@@ -337,7 +342,9 @@ iframe {
 /* ----------- iPhones ----------- */
 
 /* 16 Pro */
-@media only screen and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
+@media only screen and (max-device-width: 402px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
+  :root {
+  }
   #welcome-link {
     display: none;
   }
@@ -346,13 +353,19 @@ iframe {
     margin-inline-end: 1vw;
   }
   #navbar {
+    box-shadow: 0em 0em 0.5em 0em var(--shadows);
+    font-size: 0.75em;
     padding: 0em;
     margin: 0em;
   }
   #code-menu > a {
     margin: 0px;
   }
+  #code-menu > div > div {
+    box-shadow: 0em 0em 0.5em 0em var(--shadows);
+  }
   #music-menu > div > div {
+    box-shadow: 0em 0em 0.5em 0em var(--shadows);
     position: absolute;
     text-align: right;
     top: 0px;
@@ -361,5 +374,19 @@ iframe {
 }
 
 /* Landscape */
-@media only screen and (min-device-width: 402px) and (max-device-width: 847px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
+@media only screen and (max-device-width: 847px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
+  #navbar {
+    display: flex;
+    left: 0;
+    top: 0;
+    width: 10vw;
+    height: 100vh;
+    padding-left: 0;
+  }
+  #navbar a {
+    float: left;
+  }
+  #container {
+    float: right;
+  }
 }
