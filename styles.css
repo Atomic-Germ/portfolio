@@ -375,6 +375,9 @@ iframe {
 
 /* Landscape */
 @media only screen and (max-device-width: 847px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
+  section {
+    font-size: 0.5em;
+  }
   #navbar {
     display: flex;
     left: 0;
