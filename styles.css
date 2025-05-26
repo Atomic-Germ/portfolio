@@ -336,11 +336,7 @@ iframe {
 /* ----------- iPhones ----------- */
 
 /* 16 Pro */
-@media only screen and (min-device-width: 402px) and (max-device-width: 847px) and (-webkit-min-device-pixel-ratio: 3) {
-}
-
-/* Portrait */
-@media only screen and (min-device-width: 402px) and (max-device-width: 847px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
+@media only screen and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
   #welcome-link {
     display: none;
   }
