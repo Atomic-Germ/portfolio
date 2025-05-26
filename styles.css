@@ -76,7 +76,7 @@ a {
 
 section {
   background-color: var(--bar-contrast);
-  height: calc(100vh - 10rem);
+  height: 80vh;
   padding: 3rem;
   margin: 0 0 1rem;
   border-radius: 1rem;
@@ -101,12 +101,13 @@ section:last-child {
   z-index: 0;
   overflow-x: hidden;
   width: 100vw;
+  height: content;
 }
 
 #navlinks {
   list-style-type: none;
   overflow: hidden;
-  padding: 0 1rem;
+  padding: 0rem 0rem;
 }
 
 #welcome-section {
@@ -309,8 +310,8 @@ section:last-child {
 
 .svg {
   filter: var(--svg-filter);
-  width: 1rem;
-  height: 1rem;
+  width: 1em;
+  height: 1em;
 }
 
 iframe {
@@ -344,8 +345,9 @@ iframe {
     margin-inline-start: 1vw;
     margin-inline-end: 1vw;
   }
-  nav {
-    font-size: 0.7rem;
+  #navbar {
+    padding: 0em;
+    margin: 0em;
   }
   #code-menu > a {
     margin: 0px;
