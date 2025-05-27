@@ -9,7 +9,7 @@
     "lint:fix": "pnpm run lint:css -w && pnpm run lint:html -w && pnpm run lint:js --fix",
     "lint:css": "prettier --bracket-same-line --parser css --quote-props preserve --no-config -l *.css */*.css",
     "lint:html": "prettier --bracket-same-line --parser html --quote-props preserve --no-config -l *.html */*.html",
-    "lint:js": "eslint */*.js",
+    "lint:js": "eslint . --ext .js,.mjs",
     "dev": "live-server"
   },
   "keywords": [
@@ -22,6 +22,7 @@
   "packageManager": "pnpm@10.11.0",
   "devDependencies": {
     "eslint": "^9.27.0",
+    "globals": "^16.2.0",
     "live-server": "^1.2.2",
     "prettier": "^3.5.3"
   },
