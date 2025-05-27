@@ -384,22 +384,15 @@ iframe {
 
 /* Landscape */
 @media only screen and (max-device-width: 847px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
-  section {
-    font-size: 0.5em;
-  }
   /* Place navbar to the left */
   #navbar {
     position: fixed;
-    top: 0;
-    left: 0;
     width: 13vw;
     height: 100vh;
-    background-color: var(--bar-bground);
-    z-index: 100;
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    box-shadow: 2px 0 8px var(--shadows);
+    box-shadow: none;
     overflow-y: auto;
   }
   #navlinks {
@@ -436,35 +429,5 @@ iframe {
   .dropdown:hover .dropdown-content,
   .dropdown:focus-within .dropdown-content {
     display: block;
-  }
-
-  /* Responsive tweak: stack nav horizontally on small screens */
-  @media (max-width: 720px) {
-    #navbar {
-      position: static;
-      width: 100vw;
-      height: max-content;
-      flex-direction: row;
-      box-shadow: 0 8px 16px 0 var(--shadows);
-    }
-    #navlinks {
-      flex-direction: row;
-    }
-    #container {
-      margin-left: 0;
-      width: 100%;
-    }
-    .dropdown-content {
-      left: 0;
-      top: 100%;
-      border-radius: 0 0 1rem 1rem;
-    }
-  }
-
-  /* Make main content shift right */
-  #container {
-    margin-left: 13vw; /* Same as #navbar width */
-    width: calc(100% - 13vw);
-    transition: var(--transition-time);
   }
 }
