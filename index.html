@@ -4,8 +4,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Personal Portfolio</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Montserrat" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
 
@@ -15,8 +19,8 @@
         <h1>Hi</h1>
         <p>I'm Casey, and this is a selection of things I've worked on.</p>
         <span class="down">
-          <a href="#projects">
-            <span class="fa fa-angle-down pulse"> </span>
+          <a href="#projects" aria-label="Scroll to projects">
+            <span class="fa fa-angle-down pulse" aria-hidden="true"></span>
           </a>
         </span>
       </section>
@@ -159,8 +163,8 @@
           I also like to produce music. I believe the best way to continuously
           train yourself to think in patterns is solving diverse ones. Music
           production is often a puzzle of timing. I very often remix existing
-          songs (with permission), and occasionally something original. This is a
-          small sampling.
+          songs (with permission), and occasionally something original. This is
+          a small sampling.
         </p>
         <div class="project-tile" id="music-remixes">
           <h2 class="project-title">Skio Remixes</h2>
@@ -317,13 +321,16 @@
     <nav id="navbar">
       <ul id="navlinks">
         <li class="navlink">
-          <a target="_blank" aria-label="Github" href="https://github.com/Atomic-Germ"
+          <a
+            target="_blank"
+            aria-label="Github"
+            href="https://github.com/Atomic-Germ"
             ><i class="fa fa-github"></i
           ></a>
         </li>
         <li class="navlink">
           <a
-              aria-label="Free Code Camp"
+            aria-label="Free Code Camp"
             id="fcc-link"
             target="_blank"
             href="https://www.freecodecamp.org/CaseyParker"
@@ -332,7 +339,7 @@
         </li>
         <li class="navlink" id="profile-link">
           <a
-              aria-label="Exercism Profile"
+            aria-label="Exercism Profile"
             target="_blank"
             href="https://exercism.org/profiles/Atomic-Germ/contributions"
             ><img
@@ -342,11 +349,15 @@
           /></a>
         </li>
         <li id="music-menu" class="dropdown navlink">
-          <a href="#music-projects" class="dropbtn navlink" aria-label="Music">Music</a>
+          <a href="#music-projects" class="dropbtn navlink" aria-label="Music"
+            >Music</a
+          >
           <div class="dropdown">
             <button class="dropbtn" hidden>Dropdown</button>
             <div class="dropdown-content">
-              <a href="#music-remixes" aria-label="Remixes and Covers">Remixes/Covers</a>
+              <a href="#music-remixes" aria-label="Remixes and Covers"
+                >Remixes/Covers</a
+              >
               <a href="#music-original" aria-label="Original Music">Original</a>
               <!-- This is just optimism
             <a href="#music-featured">Features</a> -->
@@ -358,17 +369,31 @@
           <div class="dropdown">
             <button class="dropbtn" hidden>Dropdown</button>
             <div class="dropdown-content">
-              <a href="#time-to-leave" aria-label="Time to Leave, an app that tells you to go home">Time to Leave</a>
-              <a href="#time-to-go" aria-label="Time to Go, a phone port of Time to Leave">Time to Go</a>
-              <a target="_blank" aria-label="Penguin CSS Project" href="./penguin/index.html"
+              <a
+                href="#time-to-leave"
+                aria-label="Time to Leave, an app that tells you to go home"
+                >Time to Leave</a
+              >
+              <a
+                href="#time-to-go"
+                aria-label="Time to Go, a phone port of Time to Leave"
+                >Time to Go</a
+              >
+              <a
+                target="_blank"
+                aria-label="Penguin CSS Project"
+                href="./penguin/index.html"
                 >Penguin Project (exercism)</a
               >
-              <a target="_blank" aria-label="Untitled javascript RPG" href="./simple-rpg/index.html"
+              <a
+                target="_blank"
+                aria-label="Untitled javascript RPG"
+                href="./simple-rpg/index.html"
                 >RPG Project (exercism)</a
               >
               <hr />
               <a
-                  aria-label="Free Code Camp certificate for responsive web design"
+                aria-label="Free Code Camp certificate for responsive web design"
                 target="_blank"
                 href="https://freecodecamp.org/certification/CaseyParker/responsive-web-design"
                 >FreeCodeCamp Certificate</a
