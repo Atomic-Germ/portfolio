@@ -153,11 +153,7 @@ section:last-child {
 }
 
 #container {
-  margin-left: 0;
-  margin-top: 2rem;
   transition: var(--transition-time);
-  height: 100%;
-  width: 100%;
   overflow: hidden;
 }
 
