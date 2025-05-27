@@ -115,6 +115,7 @@ section:last-child {
 
 #navlinks {
   list-style-type: none;
+  background-color: var(--bar-bground);
   overflow: hidden;
   padding: 0rem 0rem;
 }
@@ -442,7 +443,7 @@ iframe {
     #navbar {
       position: static;
       width: 100vw;
-      height: auto;
+      height: max-content;
       flex-direction: row;
       box-shadow: 0 8px 16px 0 var(--shadows);
     }
