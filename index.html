@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Personal Portfolio</title>
+    <title>Casey Parker | Personal Portfolio</title>
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Montserrat" />
@@ -12,102 +12,104 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
-
   <body class="theme adaptive">
-    <nav id="navbar">
-      <ul id="navlinks">
-        <li class="navlink">
-          <a
-            target="_blank"
-            aria-label="Github"
-            href="https://github.com/Atomic-Germ">
-            <span class="fa fa-github" aria-hidden="true"></span>
-            <span class="sr-only">GitHub</span>
-          </a>
-        </li>
-        <li class="navlink">
-          <a
-            aria-label="Free Code Camp"
-            id="fcc-link"
-            target="_blank"
-            href="https://www.freecodecamp.org/CaseyParker">
-            <span class="fa fa-free-code-camp" aria-hidden="true"></span>
-            <span class="sr-only">Free Code Camp</span>
-          </a>
-        </li>
-        <li class="navlink" id="profile-link">
-          <a
-            aria-label="Exercism Profile"
-            target="_blank"
-            href="https://exercism.org/profiles/Atomic-Germ/contributions">
-            <img
-              class="svg"
-              src="https://raw.githubusercontent.com/Atomic-Germ/portfolio/refs/heads/main/exercism-logo.png"
-              alt="Exercism Profile" />
-          </a>
-        </li>
-        <li id="music-menu" class="dropdown navlink">
-          <a href="#music-projects" class="dropbtn navlink" aria-label="Music"
-            >Music</a
-          >
-          <div class="dropdown">
-            <button class="dropbtn" hidden="">Dropdown</button>
-            <div class="dropdown-content">
-              <a href="#music-remixes" aria-label="Remixes and Covers"
-                >Remixes/Covers</a
-              >
-              <a href="#music-original" aria-label="Original Music">Original</a>
-              <!-- This is just optimism
-              <a href="#music-featured">Features</a> -->
+    <a class="sr-only" href="#main-content">Skip to main content</a>
+    <header>
+      <nav id="navbar" aria-label="Main navigation">
+        <ul id="navlinks">
+          <li class="navlink">
+            <a
+              target="_blank"
+              aria-label="Github"
+              href="https://github.com/Atomic-Germ">
+              <span class="fa fa-github" aria-hidden="true"></span>
+              <span class="sr-only">GitHub</span>
+            </a>
+          </li>
+          <li class="navlink">
+            <a
+              aria-label="Free Code Camp"
+              id="fcc-link"
+              target="_blank"
+              href="https://www.freecodecamp.org/CaseyParker">
+              <span class="fa fa-free-code-camp" aria-hidden="true"></span>
+              <span class="sr-only">Free Code Camp</span>
+            </a>
+          </li>
+          <li class="navlink" id="profile-link">
+            <a
+              aria-label="Exercism Profile"
+              target="_blank"
+              href="https://exercism.org/profiles/Atomic-Germ/contributions">
+              <img
+                class="svg"
+                src="https://raw.githubusercontent.com/Atomic-Germ/portfolio/refs/heads/main/exercism-logo.png"
+                alt="Exercism Profile" />
+            </a>
+          </li>
+          <li id="music-menu" class="dropdown navlink">
+            <a href="#music-projects" class="dropbtn navlink" aria-label="Music"
+              >Music</a
+            >
+            <div class="dropdown">
+              <button class="dropbtn" hidden="">Dropdown</button>
+              <div class="dropdown-content">
+                <a href="#music-remixes" aria-label="Remixes and Covers"
+                  >Remixes/Covers</a
+                >
+                <a href="#music-original" aria-label="Original Music"
+                  >Original</a
+                >
+              </div>
             </div>
-          </div>
-        </li>
-        <li id="code-menu" class="dropdown navlink">
-          <a href="#projects" class="dropbtn navlink" aria-label="Code">Code</a>
-          <div class="dropdown">
-            <button class="dropbtn" hidden="">Dropdown</button>
-            <div class="dropdown-content">
-              <a
-                href="#time-to-leave"
-                aria-label="Time to Leave, an app that tells you to go home"
-                >Time to Leave</a
-              >
-              <a
-                href="#time-to-go"
-                aria-label="Time to Go, a phone port of Time to Leave"
-                >Time to Go</a
-              >
-              <a
-                target="_blank"
-                aria-label="Penguin CSS Project"
-                href="./penguin/index.html"
-                >Penguin Project (exercism)</a
-              >
-              <a
-                target="_blank"
-                aria-label="Untitled javascript RPG"
-                href="./simple-rpg/index.html"
-                >RPG Project (exercism)</a
-              >
-              <hr />
-              <a
-                aria-label="Free Code Camp certificate for responsive web design"
-                target="_blank"
-                href="https://freecodecamp.org/certification/CaseyParker/responsive-web-design"
-                >FreeCodeCamp Certificate</a
-              >
+          </li>
+          <li id="code-menu" class="dropdown navlink">
+            <a href="#projects" class="dropbtn navlink" aria-label="Code"
+              >Code</a
+            >
+            <div class="dropdown">
+              <button class="dropbtn" hidden="">Dropdown</button>
+              <div class="dropdown-content">
+                <a
+                  href="#time-to-leave"
+                  aria-label="Time to Leave, an app that tells you to go home"
+                  >Time to Leave</a
+                >
+                <a
+                  href="#time-to-go"
+                  aria-label="Time to Go, a phone port of Time to Leave"
+                  >Time to Go</a
+                >
+                <a
+                  target="_blank"
+                  aria-label="Penguin CSS Project"
+                  href="./penguin/index.html"
+                  >Penguin Project (exercism)</a
+                >
+                <a
+                  target="_blank"
+                  aria-label="Untitled javascript RPG"
+                  href="./simple-rpg/index.html"
+                  >RPG Project (exercism)</a
+                >
+                <hr />
+                <a
+                  aria-label="Free Code Camp certificate for responsive web design"
+                  target="_blank"
+                  href="https://freecodecamp.org/certification/CaseyParker/responsive-web-design">
+                  FreeCodeCamp Certificate
+                </a>
+              </div>
             </div>
-          </div>
-        </li>
-        <li id="welcome-link" class="navlink">
-          <a href="#welcome-section" aria-label="home">Casey Parker</a>
-        </li>
-      </ul>
-    </nav>
-    <div id="container">
-      <section id="welcome-section">
-        <h1>Hi</h1>
-        <p>I'm Casey, and this is a selection of things I've worked on.</p>
+          </li>
+          <li id="welcome-link" class="navlink">
+            <a href="#welcome-section" aria-label="home">Casey Parker</a>
+          </li>
+        </ul>
+      </nav>
+      <section id="welcome-section" aria-labelledby="welcome-heading">
+        <h1 id="welcome-heading">Casey Parker</h1>
+        <p>Hi, this is a selection of things I've worked on.</p>
         <span class="down">
           <a href="#projects" aria-label="Scroll to projects">
             <span class="fa fa-angle-down pulse" aria-hidden="true"></span>
@@ -115,13 +117,19 @@
           </a>
         </span>
       </section>
-
-      <section id="projects" class="project-section">
-        <h1>Projects</h1>
+    </header>
+    <main id="main-content">
+      <section
+        id="projects"
+        class="project-section"
+        aria-labelledby="projects-heading">
+        <h2 id="projects-heading">Projects</h2>
         <p>Projects I've made or contributed to.</p>
-
-        <div class="project-tile" id="time-to-leave">
-          <h2 class="project-title">Time to Leave</h2>
+        <article
+          class="project-tile"
+          id="time-to-leave"
+          aria-labelledby="ttl-title">
+          <h3 class="project-title" id="ttl-title">Time to Leave</h3>
           <p class="description">
             Time to Leave is built on
             <a
@@ -142,7 +150,7 @@
               href="https://jquery.com/"
               >jQuery</a
             >. The majority of my contributions have been to the front end, and
-            to a lesser extent javascript. Tests are written using
+            to a lesser extent JavaScript. Tests are written using
             <a
               class="project-description-link"
               target="_blank"
@@ -165,8 +173,8 @@
                 class="screenshot"
                 loading="lazy"
                 src="https://raw.githubusercontent.com/Atomic-Germ/portfolio/refs/heads/main/ttl-screenshot.jpg"
-                alt="Main Clock Screen"
-            /></a>
+                alt="Main Clock Screen" />
+            </a>
             <p>
               A work time-clock that reminds you to go home. Using a punch-in
               punch-out system, TTL takes your lunch time and other factors into
@@ -178,22 +186,22 @@
             </p>
             <a
               target="_blank"
-              href="https://raw.githubusercontent.com/Atomic-Germ/portfolio/refs/heads/main/ttl-screenshot-waiver-manager.jpg"
-              ><img
+              href="https://raw.githubusercontent.com/Atomic-Germ/portfolio/refs/heads/main/ttl-screenshot-waiver-manager.jpg">
+              <img
                 class="screenshot"
                 loading="lazy"
                 src="https://raw.githubusercontent.com/Atomic-Germ/portfolio/refs/heads/main/ttl-screenshot-waiver-manager.jpg"
-                alt="Weekday Waiver Manager"
-            /></a>
+                alt="Weekday Waiver Manager" />
+            </a>
             <a
               target="_blank"
-              href="https://raw.githubusercontent.com/Atomic-Germ/portfolio/refs/heads/main/ttl-screenshot-notification.jpg"
-              ><img
+              href="https://raw.githubusercontent.com/Atomic-Germ/portfolio/refs/heads/main/ttl-screenshot-notification.jpg">
+              <img
                 class="screenshot"
                 loading="lazy"
                 src="https://raw.githubusercontent.com/Atomic-Germ/portfolio/refs/heads/main/ttl-screenshot-notification.jpg"
-                alt="Time to Leave Notification"
-            /></a>
+                alt="Time to Leave Notification" />
+            </a>
             <p>
               Log the time you started working today, and the program will
               compute what time you should leave the office, considering the
@@ -207,13 +215,13 @@
             </p>
             <a
               target="_blank"
-              href="https://raw.githubusercontent.com/Atomic-Germ/portfolio/refs/heads/main/ttl-screenshot-preferences.jpg"
-              ><img
+              href="https://raw.githubusercontent.com/Atomic-Germ/portfolio/refs/heads/main/ttl-screenshot-preferences.jpg">
+              <img
                 class="screenshot"
                 loading="lazy"
                 src="https://raw.githubusercontent.com/Atomic-Germ/portfolio/refs/heads/main/ttl-screenshot-preferences.jpg"
-                alt="Preferences Manager"
-            /></a>
+                alt="Preferences Manager" />
+            </a>
           </div>
           <p class="project-description">
             Time to Leave works on MacOS, Windows and Linux, and you can
@@ -242,14 +250,17 @@
               >official page here</a
             >.
           </p>
-        </div>
-        <div class="project-tile" id="time-to-go">
-          <h2 class="project-title">Time to Go</h2>
+        </article>
+        <article
+          class="project-tile"
+          id="time-to-go"
+          aria-labelledby="ttg-title">
+          <h3 class="project-title" id="ttg-title">Time to Go</h3>
           <p>Time to Go is a mobile-first port of Time to Leave.</p>
-        </div>
+        </article>
       </section>
-      <section>
-        <h1 id="music-projects">Music Projects</h1>
+      <section id="music-projects" aria-labelledby="music-heading">
+        <h2 id="music-heading">Music Projects</h2>
         <p>
           I also like to produce music. I believe the best way to continuously
           train yourself to think in patterns is solving diverse ones. Music
@@ -257,157 +268,199 @@
           songs (with permission), and occasionally something original. This is
           a small sampling.
         </p>
-        <div class="project-tile" id="music-remixes">
-          <h2 class="project-title">Skio Remixes</h2>
+        <article
+          class="project-tile"
+          id="music-remixes"
+          aria-labelledby="remixes-heading">
+          <h3 class="project-title" id="remixes-heading">Skio Remixes</h3>
           <p class="description">
             Skio Music hosts remix contests, courtesy of the original artists.
             This is a very good way to get familiar with music production.
           </p>
+          <!-- All remix iframes -->
           <iframe
             src="https://embed.skiomusic.com/?username=casey-j-parker&slug=phoenix-1901-caseker-remix&theme=light"
             scrolling="no"
             frameborder="no"
-            height="100px"></iframe>
+            height="100px"
+            title="Phoenix 1901 Remix"></iframe>
           <iframe
             src="https://embed.skiomusic.com/?username=casey-j-parker&slug=major-lazer-lean-on-feat-m-dj-snake-caseker-remix&theme=light"
             scrolling="no"
             frameborder="no"
-            height="100px"></iframe>
+            height="100px"
+            title="Major Lazer Lean On Remix"></iframe>
           <iframe
             src="https://embed.skiomusic.com/?username=sleevelessrecords&slug=stylust-beats-iyffe-slo-motion-case-ker-remix&theme=light"
             scrolling="no"
             frameborder="no"
-            height="100px"></iframe>
+            height="100px"
+            title="Stylust Beats Slo Motion Remix"></iframe>
           <iframe
             src="https://embed.skiomusic.com/?username=casey-j-parker&slug=sodown-oblivinatti-twinnflame-supernova-caseker-remix&theme=light"
             scrolling="no"
             frameborder="no"
-            height="100px"></iframe>
+            height="100px"
+            title="SoDown Oblivinatti Remix"></iframe>
           <iframe
             src="https://embed.skiomusic.com/?username=westwoodrecordings&slug=defunk-pretty-things-case-ker-remix&theme=light"
             scrolling="no"
             frameborder="no"
-            height="100px"></iframe>
+            height="100px"
+            title="Defunk Pretty Things Remix"></iframe>
           <iframe
             src="https://embed.skiomusic.com/?username=casey-j-parker&slug=rscl-repiet-julia-kleijn-echo-case-ker-remix&theme=light"
             scrolling="no"
             frameborder="no"
-            height="100px"></iframe>
+            height="100px"
+            title="RSCL Repiet Julia Kleijn Echo Remix"></iframe>
           <iframe
             src="https://embed.skiomusic.com/?username=shadowkey&slug=shadowkey-rubika-its-not-over-feat-linn-sandin-brdx-17021-remix&theme=light"
             scrolling="no"
             frameborder="no"
-            height="100px"></iframe>
+            height="100px"
+            title="Shadowkey Rubika Remix"></iframe>
           <iframe
             src="https://embed.skiomusic.com/?username=samsmyers&slug=sam-smyers-so-consumed-feat-kyan-palmer-kashaiahya85-remix&theme=light"
             scrolling="no"
             frameborder="no"
-            height="100px"></iframe>
+            height="100px"
+            title="Sam Smyers So Consumed Remix"></iframe>
           <iframe
             src="https://embed.skiomusic.com/?username=fileundermusic&slug=skye-wallace-not-ready-for-this-to-start-brdx-17021-remix&theme=light"
             scrolling="no"
             frameborder="no"
-            height="100px"></iframe>
+            height="100px"
+            title="Skye Wallace Not Ready For This Remix"></iframe>
           <iframe
             src="https://embed.skiomusic.com/?username=lyndseyelm&slug=lyndsey-elm-sweet-serendipity-case-ker-remix&theme=light"
             scrolling="no"
             frameborder="no"
-            height="100px"></iframe>
+            height="100px"
+            title="Lyndsey Elm Sweet Serendipity Remix"></iframe>
           <iframe
             src="https://embed.skiomusic.com/?username=casey-j-parker&slug=super-hi-x-neeka-following-the-sun-case-ker-remix&theme=light"
             scrolling="no"
             frameborder="no"
-            height="100px"></iframe>
+            height="100px"
+            title="Super Hi x Neeka Following The Sun Remix"></iframe>
           <iframe
             src="https://embed.skiomusic.com/?username=casey-j-parker&slug=william-black-lie-case-ker-remix&theme=light"
             scrolling="no"
             frameborder="no"
-            height="100px"></iframe>
+            height="100px"
+            title="William Black Lie Remix"></iframe>
           <iframe
             src="https://embed.skiomusic.com/?username=samsmyers&slug=sam-smyers-nobody-listening-feat-lizzy-land-brdx-17021-remix&theme=light"
             scrolling="no"
             frameborder="no"
-            height="100px"></iframe>
+            height="100px"
+            title="Sam Smyers Nobody Listening Remix"></iframe>
           <iframe
             src="https://embed.skiomusic.com/?username=casey-j-parker&slug=milky-chance-synchronize-case-ker-remix&theme=light"
             scrolling="no"
             frameborder="no"
-            height="100px"></iframe>
+            height="100px"
+            title="Milky Chance Synchronize Remix"></iframe>
           <iframe
             src="https://embed.skiomusic.com/?username=casey-j-parker&slug=plsty-yours-ft-tudor-case-ker-remix&theme=light"
             scrolling="no"
             frameborder="no"
-            height="100px"></iframe>
+            height="100px"
+            title="PLSTY Yours Remix"></iframe>
           <iframe
             src="https://embed.skiomusic.com/?username=casey-j-parker&slug=milky-chance-stolen-dance-case-ker-remix&theme=light"
             scrolling="no"
             frameborder="no"
-            height="100px"></iframe>
+            height="100px"
+            title="Milky Chance Stolen Dance Remix"></iframe>
           <iframe
             src="https://embed.skiomusic.com/?username=mcd&slug=felipe-sereno-sorrizin-case-ker-remix&theme=light"
             scrolling="no"
             frameborder="no"
-            height="100px"></iframe>
+            height="100px"
+            title="Felipe Sereno Sorrizin Remix"></iframe>
           <iframe
             src="https://embed.skiomusic.com/?username=casey-j-parker&slug=said-the-sky-emotion-sickness-with-will-anderson-parachute-case-ker-remix&theme=light"
             scrolling="no"
             frameborder="no"
-            height="100px"></iframe>
+            height="100px"
+            title="Said The Sky Emotion Sickness Remix"></iframe>
           <iframe
             src="https://embed.skiomusic.com/?username=casey-j-parker&slug=elodie-reverie-pan-am-case-ker-remix&theme=light"
             scrolling="no"
             frameborder="no"
-            height="100px"></iframe>
+            height="100px"
+            title="Elodie Reverie Pan Am Remix"></iframe>
           <iframe
             src="https://embed.skiomusic.com/?username=casey-j-parker&slug=jvna-ghost-case-ker-remix&theme=light"
             scrolling="no"
             frameborder="no"
-            height="100px"></iframe>
-        </div>
-        <div class="project-tile" id="music-original">
-          <h2 class="project-title">Original Music</h2>
+            height="100px"
+            title="JVNA Ghost Remix"></iframe>
+        </article>
+        <article
+          class="project-tile"
+          id="music-original"
+          aria-labelledby="original-heading">
+          <h3 class="project-title" id="original-heading">Original Music</h3>
           <p class="description">
             When I'm not working on a remix, I'm usually working on something
             original. While I do junk the majority of those, here is a small
             selection.
           </p>
+          <!-- All original iframes -->
           <iframe
             src="https://embed.skiomusic.com/?username=casey-j-parker&slug=brdx-1-7-021-quarks-and-quanta-charm&theme=light"
             scrolling="no"
             frameborder="no"
-            height="100px"></iframe>
+            height="100px"
+            title="Quarks and Quanta"></iframe>
           <iframe
             src="https://embed.skiomusic.com/?username=casey-j-parker&slug=brdx17021-narwal-gonga&theme=light"
             scrolling="no"
             frameborder="no"
-            height="100px"></iframe>
+            height="100px"
+            title="Narwal Gonga"></iframe>
           <iframe
             src="https://embed.skiomusic.com/?username=casey-j-parker&slug=-brdx17021-wait-forever&theme=light"
             scrolling="no"
             frameborder="no"
-            height="100px"></iframe>
+            height="100px"
+            title="Wait Forever"></iframe>
           <iframe
             src="https://embed.skiomusic.com/?username=casey-j-parker&slug=94b32f8b-5c1a-4ff1-8173-dc7bb1e71453&theme=light"
             scrolling="no"
             frameborder="no"
-            height="100px"></iframe>
+            height="100px"
+            title="Original Track 1"></iframe>
           <iframe
             src="https://embed.skiomusic.com/?username=casey-j-parker&slug=brdx-17021-chill-studiously&theme=light"
             scrolling="no"
             frameborder="no"
-            height="100px"></iframe>
+            height="100px"
+            title="Chill Studiously"></iframe>
           <iframe
             src="https://embed.skiomusic.com/?username=casey-j-parker&slug=brdx-17021-have-a-sit&theme=light"
             scrolling="no"
             frameborder="no"
-            height="100px"></iframe>
+            height="100px"
+            title="Have a Sit"></iframe>
           <iframe
             src="https://embed.skiomusic.com/?username=casey-j-parker&slug=82f97990-d780-4ce1-8c83-6f50ec684263&theme=light"
             scrolling="no"
             frameborder="no"
-            height="100px"></iframe>
-        </div>
+            height="100px"
+            title="Original Track 2"></iframe>
+        </article>
       </section>
-    </div>
+    </main>
+    <footer>
+      <p>
+        © Casey Parker. <a href="mailto:your.email@example.com">Contact</a>
+      </p>
+
+      
+    </footer>
   </body>
 </html>
