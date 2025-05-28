@@ -1,0 +1,1 @@
+[![Depoloyed](https://github.com/Atomic-Germ/portfolio/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/Atomic-Germ/portfolio/actions/workflows/pages/pages-build-deployment)
