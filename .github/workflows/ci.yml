@@ -1,6 +1,10 @@
 name: CI - Lint and Test
 
 on:
+  push:
+    branches:
+      - dev/*
+      - fix/*
   pull_request:
     branches:
       - main
