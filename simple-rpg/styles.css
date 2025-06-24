@@ -64,6 +64,7 @@ button:active {
 }
 
 #game {
+  display: grid;
   background-color: var(--window-background);
   margin: auto;
   margin-top: 1ch;
@@ -111,37 +112,32 @@ button:active {
 }
 
 #monsterImage {
-  position: absolute;
   display: none;
   z-index: 1;
-  padding: 0px;
-  margin: 0px;
-  width: content;
-  height: content;
+  padding-left: 50%;
+  width: auto;
+  height: min-content;
+  margin-bottom: -5px;
 }
 
-#monsterImage > img {
-  position: absolute;
-  bottom: 0px;
+#monsterImage img {
   transform: translateX(-50%);
 }
 
 #text {
-  position: relative;
+  place-self: stretch;
   background-color: var(--shadow-color);
   border-radius: 3%;
   border: 1ch solid white;
   border-image: url("") 100 stretch;
-  margin: 0ch;
   padding: 0ch 1ch;
   box-shadow: 0 0 1ch var(--shadow-color);
   word-wrap: break-word;
   width: auto;
   overflow-x: hidden;
-  height: 18vh;
+  height: 30vh;
   overflow-y: scroll;
   font-size: 2em;
-  top: 31vh;
   z-index: 0;
 }
 
@@ -221,19 +217,13 @@ button:focus {
   }
 }
 
-@media screen and (max-height: 1080px) and (min-width: 800px) {
+@media screen and (min-height: 700px) and (min-width: 800px) {
   #game {
-    margin: 1em 5em 0em 10em;
-    height: 40em;
+    max-width: 800px;
   }
-  #monsterImage {
-    bottom: 11em;
-    right: 45vw;
-  }
-  #monsterImage > img {
-    filter: drop-shadow(0vh 0vw 1vh var(--button-color));
-    max-height: 18em;
-    min-height: 15em;
+  #text {
+    place-self: end;
+    width: -webkit-fill-available;
   }
   #controls {
     position: fixed;
@@ -241,31 +231,11 @@ button:focus {
     display: grid;
     height: 12em;
     width: 26em;
-  }
-  #text {
-    top: 10em;
+    z-index: 1;
   }
   button {
     width: 100%;
     padding: 0px;
     margin: 0px;
-  }
-}
-
-@media screen and (min-height: 1080px) and (max-width: 1080px) {
-  #game {
-    margin: 3vh 5vw 0px 5vh;
-  }
-  #monsterImage {
-    right: 50vw;
-    bottom: 45vh;
-  }
-  #monsterImage > img {
-    filter: drop-shadow(0vh 0vw 1vw var(--button-color));
-    min-height: 18em;
-    max-height: 23em;
-  }
-  #text {
-    top: 37vh;
   }
 }
