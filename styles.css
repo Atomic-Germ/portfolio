@@ -1,7 +1,7 @@
 :root {
   font-family: Montserrat, sans-serif;
   font-weight: 200;
-
+  font-display: swap;
   --transition-time: 0.1s;
 }
 
@@ -76,10 +76,6 @@ body {
   border: 0;
 }
 
-nav {
-  box-shadow: 0 8px 16px 0 var(--shadows);
-}
-
 a {
   text-decoration: none;
   cursor: pointer;
@@ -88,42 +84,26 @@ a {
 section {
   background-color: var(--bar-contrast);
   height: 80vh;
-  padding: 3rem;
+  padding: 3rem 3em 3em 3em;
   margin: 0 0 1rem;
   border-radius: 1rem;
   overflow: hidden scroll;
   z-index: -2;
 }
 
-section:first-child {
-  margin-top: 1.2rem;
-}
-
 section:last-child {
   border-bottom: 0;
 }
 
-#navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: var(--bar-bground);
-  z-index: 0;
-  overflow-x: hidden;
-  width: 100vw;
-}
-
 #navlinks {
-  list-style-type: none;
-  background-color: var(--bar-bground);
-  overflow: hidden;
-  padding: 0rem 0rem;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
 }
 
 #welcome-section {
-  padding-top: calc(30vh - 4rem);
   text-align: center;
-  vertical-align: middle;
+  vertical-align: 25%;
 }
 
 #welcome-section h1 {
@@ -137,7 +117,7 @@ section:last-child {
   align-self: flex-end;
 }
 
-#welcome-section p {
+#welcome-section > p {
   margin: 2vh -30vw 0;
 }
 
@@ -204,14 +184,7 @@ section:last-child {
 }
 
 .navlink {
-  float: right;
-  width: 4rem;
-  text-align: center;
-}
-
-.navlink:last-child {
-  width: 8rem;
-  float: left;
+  min-width: 5em;
 }
 
 .navlink img {
@@ -220,25 +193,12 @@ section:last-child {
   width: 1em;
 }
 
-.dropdown-content a {
-  color: var(--bar-contrast);
-  padding: 1rem 2rem;
-  text-decoration: none;
-  display: block;
-}
-
 .navlink a {
   color: var(--bar-contrast);
 }
 
-.navlink li a {
-  display: block;
-  color: var(--bar-contrast);
-  text-decoration: none;
-}
-
 .dropdown-content a:first-child {
-  padding-top: 2rem;
+  padding-top: 1rem;
 }
 
 .navlink:hover {
@@ -247,37 +207,45 @@ section:last-child {
   animation: nav-pulse 1s infinite ease-in-out alternate;
 }
 
-.navlink:last-child a {
-  color: var(--bar-contrast);
+/*
+button {
+  background-color: transparent;
+  border: none;
+  color: white;
+  padding: 0;
+  text-align: center;
+  text-decoration: none;
+  display: none;
+  font-size: 16px
 }
-
-.dropdown {
-  position: fixed;
-  text-align: right;
-  display: inline-table;
-  top: 1rem;
-  right: 14rem;
-}
-
-#music-menu.dropdown {
-  position: fixed;
-  text-align: right;
-  display: inline-table;
-  top: 1rem;
-  right: 19rem;
-}
+*/
 
 .dropdown-content {
-  display: none;
   position: absolute;
-  min-width: 16rem;
+  flex-direction: column;
+  width: fit-content;
   background-color: var(--bar-bground);
-  box-shadow: 1vh 1vh 1vw 0 var(--shadows);
   border-radius: 0 0 1rem 1rem;
 }
 
+.bar {
+  border-top: 1px solid var(--bar-contrast);
+}
+
+.dropdown-content a {
+  margin: 0.5em;
+}
+
+.dropdown-content a:first {
+  margin-top: -0.1rem;
+}
+
+.dropdown-content a:last {
+  margin-bottom: 0.1rem;
+}
+
 .dropdown:hover .dropdown-content {
-  display: block;
+  display: flex;
 }
 
 .dropdown:hover {
@@ -345,89 +313,5 @@ iframe {
   section {
     padding-top: 1vh;
     margin: 1vh auto;
-  }
-}
-
-/* ----------- iPhones ----------- */
-
-/* 16 Pro */
-@media only screen and (max-device-width: 402px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
-  :root {
-  }
-  #welcome-link {
-    display: none;
-  }
-  #welcome-section p {
-    margin-inline-start: 1vw;
-    margin-inline-end: 1vw;
-  }
-  #navbar {
-    box-shadow: 0em 0em 0.5em 0em var(--shadows);
-    font-size: 0.75em;
-    padding: 0em;
-    margin: 0em;
-  }
-  #code-menu > a {
-    margin: 0px;
-  }
-  #code-menu > div > div {
-    box-shadow: 0em 0em 0.5em 0em var(--shadows);
-  }
-  #music-menu > div > div {
-    box-shadow: 0em 0em 0.5em 0em var(--shadows);
-    position: absolute;
-    text-align: right;
-    top: 0px;
-    left: 50px;
-  }
-}
-
-/* Landscape */
-@media only screen and (max-device-width: 847px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
-  /* Place navbar to the left */
-  #navbar {
-    position: fixed;
-    width: 13vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    box-shadow: none;
-    overflow-y: auto;
-  }
-  #navlinks {
-    display: flex;
-    flex-direction: column;
-    padding: 0;
-    margin: 0;
-    width: 100%;
-  }
-  .navlink {
-    width: 100%;
-    text-align: left;
-    float: none;
-    padding: 1.1em 1.2em;
-    box-sizing: border-box;
-  }
-  .dropdown {
-    position: relative;
-    display: block;
-  }
-
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    left: 100%;
-    top: 0;
-    min-width: 16rem;
-    background-color: var(--bar-bground);
-    box-shadow: 2px 2px 10px var(--shadows);
-    border-radius: 0 1rem 1rem 0;
-    z-index: 101;
-  }
-
-  .dropdown:hover .dropdown-content,
-  .dropdown:focus-within .dropdown-content {
-    display: block;
   }
 }

@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="script-src 'none'" />
+    <meta name="description" content="My portfolio" />
     <title>Casey Parker | Personal Portfolio</title>
     <link
       rel="stylesheet"
@@ -52,8 +54,7 @@
               >Music</a
             >
             <div class="dropdown">
-              <button class="dropbtn" hidden="">Dropdown</button>
-              <div class="dropdown-content">
+              <div class="dropdown-content" id="music-dropdown" hidden="">
                 <a href="#music-remixes" aria-label="Remixes and Covers"
                   >Remixes/Covers</a
                 >
@@ -68,8 +69,7 @@
               >Code</a
             >
             <div class="dropdown">
-              <button class="dropbtn" hidden="">Dropdown</button>
-              <div class="dropdown-content">
+              <div class="dropdown-content" hidden="">
                 <a
                   href="#time-to-leave"
                   aria-label="Time to Leave, an app that tells you to go home"
@@ -92,7 +92,7 @@
                   href="./simple-rpg/index.html"
                   >RPG Project (exercism)</a
                 >
-                <hr />
+                <span class="bar"></span>
                 <a
                   aria-label="Free Code Camp certificate for responsive web design"
                   target="_blank"
@@ -102,11 +102,10 @@
               </div>
             </div>
           </li>
-          <li id="welcome-link" class="navlink">
-            <a href="#welcome-section" aria-label="home">Casey Parker</a>
-          </li>
         </ul>
       </nav>
+    </header>
+    <main id="main-content">
       <section id="welcome-section" aria-labelledby="welcome-heading">
         <h1 id="welcome-heading">Casey Parker</h1>
         <p>Hi, this is a selection of things I've worked on.</p>
@@ -117,8 +116,6 @@
           </a>
         </span>
       </section>
-    </header>
-    <main id="main-content">
       <section
         id="projects"
         class="project-section"
@@ -459,8 +456,6 @@
       <p>
         © Casey Parker. <a href="mailto:your.email@example.com">Contact</a>
       </p>
-
-      
     </footer>
   </body>
 </html>

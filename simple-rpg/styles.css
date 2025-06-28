@@ -1,5 +1,6 @@
 @font-face {
-  font-family: "JF Dot Shinonome Gothic 14";
+  font-family: "JF Dot Shinonome Gothic 14", "Courier New", Courier, monospace;
+  font-display: swap;
   src: url("font/JF-Dot-Shinonome-14-Regular.ttf") format("truetype");
 }
 
@@ -23,6 +24,7 @@
 }
 
 body {
+  display: flex;
   overflow: hidden;
   color: var(--text-color);
   background: url(./locations/map.png) no-repeat center fixed;
@@ -45,6 +47,7 @@ button {
   width: 30vw;
   margin: 1ch;
 }
+
 button:active {
   background-color: var(--button-color-active);
 }
@@ -147,12 +150,10 @@ button:active {
 }
 
 #controls {
-  position: fixed;
   display: table;
-  bottom: 2em;
   width: 100%;
   left: 0px;
-  bottom: 6vh;
+  bottom: 1vh;
 }
 
 #controls button {
@@ -190,52 +191,5 @@ button:focus {
   }
   to {
     height: 100%;
-  }
-}
-
-/*        MEDIA QUERIES          */
-
-/* iPhone SE (375x667) Portrait */
-@media screen and (max-width: 640px) and (max-height: 900px) {
-  body {
-    padding: 0px;
-  }
-  #game {
-    padding: 0px;
-  }
-  #monsterImage {
-    bottom: 10em;
-    right: 50vw;
-  }
-  #monsterImage > img {
-    filter: drop-shadow(0vh 0vw 1vw var(--button-color));
-    max-height: 10em;
-    min-height: 5em;
-  }
-  #controls {
-    bottom: 1vh;
-  }
-}
-
-@media screen and (min-height: 700px) and (min-width: 800px) {
-  #game {
-    max-width: 800px;
-  }
-  #text {
-    place-self: end;
-    width: -webkit-fill-available;
-  }
-  #controls {
-    position: fixed;
-    top: 9em;
-    display: grid;
-    height: 12em;
-    width: 26em;
-    z-index: 1;
-  }
-  button {
-    width: 100%;
-    padding: 0px;
-    margin: 0px;
   }
 }

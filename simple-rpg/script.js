@@ -75,7 +75,9 @@ const monsters = [
   }
 ];
 
-const weapons = [
+const items = [];
+
+items.weapons = [
   { name: 'STICK', power: 5 },
   { name: 'DAGGER', power: 30 },
   { name: 'CLAW HAMMER', power: 50 },
@@ -83,6 +85,7 @@ const weapons = [
   { name: 'GREAT SWORD', power: 150 },
   { name: 'SHINING SWORD', power: 200 }
 ];
+
 const locations = [
   {
     name: "town square",
@@ -192,6 +195,7 @@ function update(location) {
 }
 
 function goTown() {
+  audio.pause();
   update(locations[0]); 
   audio.src = locations[0].music[0];
   audio.play();
@@ -203,7 +207,7 @@ function goShop() {
   audio.play();
   locationImages = locations[1].images;
   body.style.backgroundImage = locationImages[0];
-  monsterImage.innerHTML = '<img src="' + locationImages[1] + '" />';
+  monsterImage.innerHTML = `<img src="${locationImages[1]}" />`;
   monsterImage.style.display = "block";
 }
 
@@ -267,12 +271,12 @@ function buyFullHealth() {
 }
 
 function buyWeapon() {
-  if (userData.currentWeapon < weapons.length - 1) {
+  if (userData.currentWeapon < items.weapons.length - 1) {
     if (userData.gold >= 30) {
      userData.gold -= 30;
       userData.currentWeapon++;
       goldText.innerText = userData.gold;
-      let newWeapon = weapons[userData.currentWeapon].name;
+      let newWeapon = items.weapons[userData.currentWeapon].name;
       sfx.src = "./audio/buy_sell.mp3";
       sfx.play();
       text.innerText = `Bought a ${newWeapon}!`;
@@ -366,17 +370,17 @@ function animateHit (hit) {
 
 function attack() {
   if (userData.items.health > 0) {
-    button4.disabled = false;
+    button4.disabled = true;
     button4.style.backgroundColor = "var(--button-color)";
   }
   text.innerText = `${monsters[fighting].name} attacks.`;
-  text.innerText += ` You attack ${monsters[fighting].name} with your ${weapons[userData.currentWeapon].name}.`;
+  text.innerText += ` You attack ${monsters[fighting].name} with your ${items.weapons[userData.currentWeapon].name}.`;
   userData.health -= getMonsterAttackValue(monsters[fighting].level);
   if (isMonsterHit()) {
     animateHit(true);
     sfx.src = "./audio/impact.mp3";
     sfx.play();
-    monsterHealth -= weapons[userData.currentWeapon].power + Math.floor(Math.random() * userData.level) + 2;    
+    monsterHealth -= items.weapons[userData.currentWeapon].power + Math.floor(Math.random() * userData.level) + 2;    
   } else {
     animateHit();
     text.innerText += " You miss.";
@@ -398,6 +402,7 @@ function attack() {
     text.innerText += " Your " + userData.inventory.pop() + " breaks.";
     userData.currentWeapon--;
   }
+  button4.disabled = false;
 }
 
 function getMonsterAttackValue(level) {
