@@ -1,10 +1,8 @@
-@font-face {
-  font-family: "JF Dot Shinonome Gothic 14", "Courier New", Courier, monospace;
-  font-display: swap;
-  src: url("font/JF-Dot-Shinonome-14-Regular.ttf") format("truetype");
-}
+
 
 :root {
+  font-family: "JF Dot Shinonome Gothic 14", "Courier New", Courier, monospace;
+  font-display: swap;
   --background-color: rgba(30, 50, 30, 80%);
   --text-color: rgb(230, 230, 230);
   --window-color: rgb(135, 100, 100);

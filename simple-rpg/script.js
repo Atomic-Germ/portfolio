@@ -42,35 +42,35 @@ const monsters = [
    "name": "GOATOAD",
    "level": 2,
    "health": 20,
-   "images": ["./monsters/goatoad-one.png"],
+   "images": ["./monsters/goatoad-one.webp"],
    "music": ["./audio/fight_1.mp3"]
   },
   {
    "name": "GOATOADPOLE",
    "level": 1,
    "health": 15,
-   "images": ["./monsters/goatoad-two.png"],
+   "images": ["./monsters/goatoad-two.webp"],
    "music": ["./audio/fight_1.mp3"]
   },
   {
    "name": "AMANITA",
    "level": 5,
    "health": 30,
-   "images": ["./monsters/dragon-normal.png"],
+   "images": ["./monsters/dragon-normal.webp"],
    "music": ["./audio/fight_1.mp3"]
   },
   {
    "name": "INVADER",
    "level": 6,
    "health": 50,
-   "images": ["./monsters/invader-one.png"],
+   "images": ["./monsters/invader-one.webp"],
    "music": ["./audio/fight_1.mp3"]
   },
   {
    "name": "PANTHERINA",
    "level": 15,
    "health": 100,
-   "images": ["./monsters/dragon-strong.png"],
+   "images": ["./monsters/dragon-strong.webp"],
    "music": ["./audio/fight_0.mp3"]
   }
 ];
@@ -92,7 +92,7 @@ const locations = [
     "button text": ["SHOP", "EXIT TOWN", "GYGA", "RESET"],
     "button functions": [goShop, goFeild, gygaEncounter, restart],
     text: "You are in the town square. You see a sign that says \"SHOP\". You also see a sign pointing toward \"Gyga\"",
-    images: ["url(./locations/town-square.png)"],
+    images: ["url(./locations/town-square.webp)"],
     music: ["./audio/town_0.mp3"]
   },
   {
@@ -100,7 +100,7 @@ const locations = [
     "button text": ["10 HEALTH", "FULL HEALTH", "UPGRADE WEAPON", "EXIT"],
     "button functions": [buyHealth, buyFullHealth, buyWeapon, goTown],
     text: "\'Hi! What can I do ya for?\'",
-    images: ["url(./locations/item-shop.png)","./people/shopkeepers/items-male.png"],
+    images: ["url(./locations/item-shop.webp)","./people/shopkeepers/items-male.png"],
     music: ["./audio/shop_0.mp3"]
   },
   {
@@ -108,9 +108,9 @@ const locations = [
     "button text": ["HUNT MINIONS", "HUNT MONSTERS", "EXIT CAVE", "RESET"],
     "button functions": [fightMinion, fightMonsters, goFeild, restart],
     text: "You enter the cave. You see some monsters.",
-    images: ["url(./locations/cave.png)"],
+    images: ["url(./locations/cave.webp)"],
     music: ["./audio/cave_0.mp3","./audio/cave_1.mp3"],
-    border: ["url(./borders/cave-border.png) 100 100 stretch"]
+    border: ["url(./borders/cave-border.webp) 100 100 stretch"]
   },
   {
     name: "fight",
@@ -153,7 +153,7 @@ const locations = [
     "button text": ["CAVE", "TOWN", "REST", "ITEM"],
     "button functions": [goCave, goTown, buyFullHealth, buyHealth],
     text: "You are in the feilds exploring, there is a cave and a town nearby.",
-    images: ["url(./locations/map.png)"],
+    images: ["url(./locations/map.webp)"],
     music: ["./audio/feild_0.mp3"]
   }
 ];
