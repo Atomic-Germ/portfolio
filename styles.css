@@ -65,6 +65,10 @@ body {
   color: var(--bar-bground);
 }
 
+ul {
+  list-style: none;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -99,6 +103,11 @@ section:last-child {
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-around;
+  z-index: 1;
+}
+
+nav {
+  background-color: var(--bar-bground);
 }
 
 #welcome-section {
@@ -185,6 +194,7 @@ section:last-child {
 
 .navlink {
   min-width: 5em;
+  color: var(--bar-contrast);
 }
 
 .navlink img {
@@ -197,62 +207,45 @@ section:last-child {
   color: var(--bar-contrast);
 }
 
-.dropdown-content a:first-child {
-  padding-top: 1rem;
-}
-
-.navlink:hover {
-  border-radius: 1rem;
-  transition: 0.5s;
-  animation: nav-pulse 1s infinite ease-in-out alternate;
-}
-
-/*
-button {
-  background-color: transparent;
-  border: none;
-  color: white;
-  padding: 0;
-  text-align: center;
-  text-decoration: none;
-  display: none;
-  font-size: 16px
-}
-*/
-
-.dropdown-content {
-  position: absolute;
-  flex-direction: column;
-  width: fit-content;
-  background-color: var(--bar-bground);
-  border-radius: 0 0 1rem 1rem;
-}
-
 .bar {
   border-top: 1px solid var(--bar-contrast);
 }
 
-.dropdown-content a {
-  margin: 0.5em;
-}
-
-.dropdown-content a:first {
-  margin-top: -0.1rem;
-}
-
-.dropdown-content a:last {
-  margin-bottom: 0.1rem;
-}
-
-.dropdown:hover .dropdown-content {
+.img-and-text {
   display: flex;
 }
 
-.dropdown:hover {
-  animation: nav-pulse 1000000s infinite ease-in-out alternate;
+.dropdown {
+  position: relative;
+  display: inline-block;
 }
 
-.img-and-text {
+.dropdown-content {
+  flex-direction: column;
+  position: absolute;
+  left: -5em;
+  background-color: var(--bar-bground);
+  min-width: max-content;
+  border-radius: 1em;
+  box-shadow: 0px 8px 16px 0px var(--shadows);
+  padding: 1em 0em;
+  z-index: 1;
+}
+
+.dropdown-hr {
+  border-top: 1px solid var(--bar-contrast);
+  margin: 1em 0em;
+}
+
+.dropdown-link {
+  margin: 0.5em 1em;
+}
+
+.dropdown-link:last-child {
+  margin-bottom: 0.1em;
+}
+
+.dropdown:hover .dropdown-content {
   display: flex;
 }
 
@@ -305,6 +298,11 @@ iframe {
   width: 100%;
   margin-bottom: 1rem;
 }
+
+/*header {
+  position: sticky;
+  top: 1em;
+}*/
 
 @media only screen and (width <= 720px) {
   .screenshots {

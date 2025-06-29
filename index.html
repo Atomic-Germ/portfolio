@@ -21,6 +21,7 @@
         <ul id="navlinks">
           <li class="navlink">
             <a
+              id="gh-link"
               target="_blank"
               aria-label="Github"
               href="https://github.com/Atomic-Germ">
@@ -45,7 +46,7 @@
               href="https://exercism.org/profiles/Atomic-Germ/contributions">
               <img
                 class="svg"
-                src="https://raw.githubusercontent.com/Atomic-Germ/portfolio/refs/heads/main/exercism-logo.png"
+                src="./exercism-logo.png"
                 alt="Exercism Profile" />
             </a>
           </li>
@@ -55,10 +56,10 @@
             >
             <div class="dropdown">
               <div class="dropdown-content" id="music-dropdown" hidden="">
-                <a href="#music-remixes" aria-label="Remixes and Covers"
+                <a class="dropdown-link" href="#music-remixes" aria-label="Remixes and Covers"
                   >Remixes/Covers</a
                 >
-                <a href="#music-original" aria-label="Original Music"
+                <a class="dropdown-link" href="#music-original" aria-label="Original Music"
                   >Original</a
                 >
               </div>
@@ -71,29 +72,34 @@
             <div class="dropdown">
               <div class="dropdown-content" hidden="">
                 <a
+                class="dropdown-link"
                   href="#time-to-leave"
                   aria-label="Time to Leave, an app that tells you to go home"
                   >Time to Leave</a
                 >
                 <a
+                class="dropdown-link"
                   href="#time-to-go"
                   aria-label="Time to Go, a phone port of Time to Leave"
                   >Time to Go</a
                 >
                 <a
+                class="dropdown-link"
                   target="_blank"
                   aria-label="Penguin CSS Project"
                   href="./penguin/index.html"
                   >Penguin Project (exercism)</a
                 >
                 <a
+                class="dropdown-link"
                   target="_blank"
                   aria-label="Untitled javascript RPG"
                   href="./simple-rpg/index.html"
                   >RPG Project (exercism)</a
                 >
-                <span class="bar"></span>
+                <span class="dropdown-hr"></span>
                 <a
+                class="dropdown-link"
                   aria-label="Free Code Camp certificate for responsive web design"
                   target="_blank"
                   href="https://freecodecamp.org/certification/CaseyParker/responsive-web-design">
@@ -453,8 +459,8 @@
       </section>
     </main>
     <footer>
-      <p>
-        © Casey Parker. <a href="mailto:your.email@example.com">Contact</a>
+      <p class="navlink">
+        <a href="mailto:your.email@example.com">© Casey Parker.</a>
       </p>
     </footer>
   </body>
