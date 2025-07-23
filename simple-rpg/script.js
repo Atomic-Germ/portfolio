@@ -13,6 +13,8 @@ let userData = {
 // Set a couple variables
 let fighting;
 let monsterHealth;
+let locationImages;
+let monsterImages;
 let id = null;
 
 // Grab a bunch of DOM
@@ -29,7 +31,6 @@ const monsterStats = document.querySelector("#monsterStats");
 const monsterName = document.querySelector("#monsterName");
 const monsterHealthText = document.querySelector("#monsterHealth");
 const monsterImage = document.querySelector("#monsterImage");
-const locationImage = document.querySelector("#location");
 const animationElement = document.querySelector("#animation");
 const audio = new Audio();
 const sfx = new Audio();
@@ -99,8 +100,8 @@ const locations = [
     name: "shop",
     "button text": ["10 HEALTH", "FULL HEALTH", "UPGRADE WEAPON", "EXIT"],
     "button functions": [buyHealth, buyFullHealth, buyWeapon, goTown],
-    text: "\'Hi! What can I do ya for?\'",
-    images: ["url(./locations/item-shop.webp)","./people/shopkeepers/items-male.png"],
+    text: "'Hi! What can I do ya for?'",
+    images: ["url(./locations/item-shop.webp)","./people/shopkeepers/items-male.webp"],
     music: ["./audio/shop_0.mp3"]
   },
   {
@@ -338,7 +339,7 @@ function goFight(monster) {
 function animateHit (hit) {
   const initialTop = animationElement.style.top;
   const initialRight = animationElement.style.right;
-  const movingBottom = 50;
+  //const movingBottom = 50;
   let hitLanded = hit ? true : false;
   let movingSize = 30;
   let movingTop = initialTop;
@@ -411,7 +412,7 @@ function getMonsterAttackValue(level) {
   return hit > 0 ? hit : 0;
 }
 
-const isMonsterHit = _ => Math.random() > .2 || userData.health < 20;
+const isMonsterHit = () => Math.random() > .2 || userData.health < 20;
 
 function dodge() {
   if (userData.items.health < 0) {
@@ -486,7 +487,7 @@ function pick(guess) {
     text.innerText += "Wrong! You lose 10 health!";
     userData.health -= 10;
     healthText.innerText = userData.health;
-    if (health <= 0) {
+    if (userData.health <= 0) {
       lose();
     }
   }
